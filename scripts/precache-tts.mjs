@@ -17,31 +17,37 @@ const MODEL = process.env.ELEVENLABS_TTS_MODEL || "eleven_multilingual_v2";
 const force = process.argv.includes("--force");
 
 // Node ≥ 22.18 strips TypeScript types natively.
-const { DEPARTMENTS, FACETS } = await import("../lib/departments.ts");
-const { FLOORS } = await import("../lib/floors.ts");
+const { DEPARTMENTS } = await import("../lib/departments.ts");
 const { LEXICON_PRESETS } = await import("../lib/lexicon.ts");
 const { CHAPTERS, COLOURS, HUB_LINES, PROLOGUE } = await import("../lib/journey/content.ts");
 
+// Every line Mademoiselle says from the authored script in Le Parcours.
 const lines = new Set();
-for (const d of Object.values(DEPARTMENTS)) {
-  lines.add(d.welcome);
-  d.oral.forEach((q, i) => lines.add(`Question ${i + 1}. ${q.question}`));
-}
-FLOORS.forEach((f) => lines.add(f.intro));
-FACETS.forEach((f) => lines.add(f.mademoiselle));
-LEXICON_PRESETS.forEach((p) => lines.add(p.result.spoken));
-// Le Parcours — the journey through the Galerie
 lines.add(PROLOGUE.letter);
 lines.add(PROLOGUE.doors);
 lines.add(HUB_LINES.return);
 lines.add(HUB_LINES.locked);
-for (const d of Object.values(DEPARTMENTS)) lines.add(HUB_LINES.arrival(d.name));
+for (const d of Object.values(DEPARTMENTS)) {
+  lines.add(HUB_LINES.arrival(d.name));
+  d.oral.forEach((q, i) => lines.add(`Question ${i + 1}. ${q.question}`));
+}
 for (const c of CHAPTERS) {
   lines.add(c.intro);
   lines.add(c.outro);
   for (const st of c.steps) if (st.kind === "explore") st.hotspots.forEach((h) => lines.add(h.spoken));
 }
 COLOURS.forEach((c) => lines.add(`${c.name}. ${c.text}`));
+LEXICON_PRESETS.forEach((p) => lines.add(p.result.spoken));
+
+// --dept=beaute|mode|client keeps only that department's arrival and questions (saves credits).
+const only = process.argv.find((a) => a.startsWith("--dept="))?.split("=")[1];
+if (only) {
+  for (const d of Object.values(DEPARTMENTS)) {
+    if (d.id === only) continue;
+    lines.delete(HUB_LINES.arrival(d.name));
+    d.oral.forEach((q, i) => lines.delete(`Question ${i + 1}. ${q.question}`));
+  }
+}
 
 // Must match lib/client/voice.tsx → sha(): first 10 bytes of SHA-256, hex.
 const hash = (t) => createHash("sha256").update(t, "utf8").digest().subarray(0, 10).toString("hex");
