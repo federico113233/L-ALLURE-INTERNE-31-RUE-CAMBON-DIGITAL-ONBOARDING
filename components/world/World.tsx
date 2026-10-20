@@ -27,6 +27,9 @@ const ROOM_SCALE: Record<Chapter["object"], number> = {
   pearls: 1.1,
 };
 
+// Flat icons that would read as a sliver if they turned side-on.
+const FLAT = new Set<Chapter["object"]>(["letter", "camellia"]);
+
 export interface WorldHandlers {
   onOpen: (id: ChapterId) => void;
   onHover: (id: ChapterId | null) => void;
@@ -112,7 +115,11 @@ function Slot({
     easing.damp3(group.current.scale, [target, target, target], visible ? 0.35 : 0.25, dt);
     if (spin.current) {
       if (isRoom) easing.dampE(spin.current.rotation, [0, 0, 0], 0.6, dt);
-      else spin.current.rotation.y += dt * (isHover ? 0.6 : 0.18);
+      else if (FLAT.has(chapter.object)) {
+        // flat icons sway instead of spinning, so they never show their edge
+        const t = state.clock.elapsedTime;
+        spin.current.rotation.y = Math.sin(t * 0.45 + chapter.position[0]) * (isHover ? 0.25 : 0.45);
+      } else spin.current.rotation.y += dt * (isHover ? 0.6 : 0.18);
     }
     // project to screen for Mademoiselle (every few frames)
     if (++frame.current % 4 === 0) {

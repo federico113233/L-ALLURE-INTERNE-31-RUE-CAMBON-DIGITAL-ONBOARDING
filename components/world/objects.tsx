@@ -235,7 +235,7 @@ export function Camellia() {
       </mesh>
       {/* black lacquered leaves */}
       {[-0.7, 2.6].map((a, i) => (
-        <mesh key={i} position={[Math.cos(a) * 0.62, -0.06, Math.sin(a) * 0.62]} rotation={[0, -a, 0.08]} scale={[0.36, 0.02, 0.15]}>
+        <mesh key={i} position={[Math.cos(a) * 0.62, -0.06, Math.sin(a) * 0.62]} rotation={[0, -a, 0.08]} scale={[0.28, 0.016, 0.11]}>
           <sphereGeometry args={[1, 24, 12]} />
           <meshPhysicalMaterial color="#050505" roughness={0.12} clearcoat={1} />
         </mesh>

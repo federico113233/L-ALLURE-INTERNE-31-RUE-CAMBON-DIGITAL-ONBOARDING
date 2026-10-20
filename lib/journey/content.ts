@@ -107,7 +107,7 @@ export const CHAPTERS: Chapter[] = [
     object: "camellia",
     name: "Le Camélia",
     subtitle: "Les Codes · Le Prisme",
-    position: [-3.0, -0.05, 0.3],
+    position: [-5.1, 0.2, -0.8],
     intro:
       "The camellia. It has no scent, and that is why I chose it: it never competes with N°5. Here you learn the grammar of the Maison. Five colours. Six faces. Nothing more.",
     outro:
@@ -134,7 +134,7 @@ export const CHAPTERS: Chapter[] = [
     name: "Le N°5",
     subtitle: "Parfums Beauté",
     dept: "beaute",
-    position: [-5.1, 0.25, -1.0],
+    position: [-3.05, 0.05, 0.2],
     intro:
       "Come closer. This is not a bottle, mon cher. It is a building. In 1921, I asked Ernest Beaux for a perfume that smelled of a woman, not of a flower. Touch the gold points. Each one is a secret of the Maison.",
     outro:
@@ -227,7 +227,7 @@ export const CHAPTERS: Chapter[] = [
     name: "La 2.55",
     subtitle: "Mode & le19M",
     dept: "mode",
-    position: [3.0, -0.05, 0.3],
+    position: [-1.05, -0.2, 0.7],
     intro:
       "My bag. Before it, a woman carried her bag in her hand, like a burden. I gave it a chain, and gave her back her hands. Touch it. Open it.",
     outro:
@@ -307,7 +307,7 @@ export const CHAPTERS: Chapter[] = [
     name: "L'Escalier",
     subtitle: "Client Experience & Digital",
     dept: "client",
-    position: [5.1, 0.25, -1.0],
+    position: [1.05, 0.1, 0.7],
     intro:
       "Thirty-one Rue Cambon. The staircase of mirrors. Every facet sees the client, and every facet sees you. Here, you will learn to receive. Not to sell. To receive.",
     outro:
@@ -372,7 +372,7 @@ export const CHAPTERS: Chapter[] = [
     object: "letter",
     name: "La Lettre",
     subtitle: "Le Lexique",
-    position: [-1.05, -0.4, 1.1],
+    position: [3.05, -0.15, 0.2],
     intro:
       "A letter. Everything at the Maison is written before it is made. Show me what you were about to send. I will tell you which house it belongs to.",
     outro: "Fewer words. Purer lines. That is the whole of our grammar.",
@@ -391,7 +391,7 @@ export const CHAPTERS: Chapter[] = [
     object: "pearls",
     name: "Les Perles",
     subtitle: "Le Grand Oral",
-    position: [1.05, 0.55, -0.6],
+    position: [5.1, 0.35, -0.8],
     intro:
       "The pearls. The last door. Three questions before you meet your Director. Answer as the Maison would answer: briefly, precisely, and without raising your voice.",
     outro: "You are ready. Go to your Director. Say less than you know.",
