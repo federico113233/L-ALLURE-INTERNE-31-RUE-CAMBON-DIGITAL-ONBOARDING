@@ -20,25 +20,23 @@ export function Bottle() {
   const label = useMemo(() => n5Label(), []);
   return (
     <group>
-      {/* glass body */}
-      <RoundedBox args={[1.05, 1.25, 0.5]} radius={0.05} smoothness={4} position={[0, -0.05, 0]}>
+      {/* glass body — clear, so the golden juice reads through it */}
+      <RoundedBox args={[1.05, 1.25, 0.5]} radius={0.05} smoothness={4} position={[0, -0.05, 0]} renderOrder={2}>
         <meshPhysicalMaterial
           color="#ffffff"
-          transmission={1}
-          thickness={0.9}
-          roughness={0.03}
-          ior={1.5}
+          transparent
+          opacity={0.28}
+          roughness={0.04}
+          metalness={0}
           clearcoat={1}
-          clearcoatRoughness={0.05}
-          attenuationColor="#f6ead0"
-          attenuationDistance={4}
-          envMapIntensity={2.2}
-          specularIntensity={1}
+          clearcoatRoughness={0.03}
+          envMapIntensity={2.4}
+          depthWrite={false}
         />
       </RoundedBox>
       {/* the juice */}
       <RoundedBox args={[0.9, 1.0, 0.36]} radius={0.03} position={[0, -0.14, 0]}>
-        <meshStandardMaterial color="#d9a94f" roughness={0.25} metalness={0.1} transparent opacity={0.88} emissive="#7a5418" emissiveIntensity={0.25} />
+        <meshStandardMaterial color="#e2b660" roughness={0.2} metalness={0.05} emissive="#8a5f1c" emissiveIntensity={0.35} />
       </RoundedBox>
       {/* label */}
       <mesh position={[0, 0.02, 0.252]}>

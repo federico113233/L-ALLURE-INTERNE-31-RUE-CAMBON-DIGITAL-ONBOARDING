@@ -12,6 +12,11 @@ interface ScreenPoint {
   y: number;
 }
 
+export interface SpotPoint extends ScreenPoint {
+  /** On the side of the object facing the camera. */
+  front: boolean;
+}
+
 interface JourneyState {
   phase: Phase;
   room: ChapterId | null;
@@ -37,6 +42,8 @@ interface JourneyState {
 
   /** Projected screen positions of the 3D objects (updated by the scene). */
   screen: Partial<Record<ChapterId, ScreenPoint>>;
+  /** Projected screen positions of the current room's hotspots. */
+  spots: Record<string, SpotPoint>;
 
   setPhase: (p: Phase) => void;
   enterRoom: (id: ChapterId) => void;
@@ -51,6 +58,7 @@ interface JourneyState {
   completeRoom: (id: ChapterId) => void;
   setOralAvg: (v: number) => void;
   setScreen: (id: ChapterId, p: ScreenPoint) => void;
+  setSpots: (s: Record<string, SpotPoint>) => void;
   direct: (o: { target?: ScreenPoint | null; look?: number | null; pose?: Pose; hidden?: boolean }) => void;
   reset: () => void;
 }
@@ -78,6 +86,7 @@ export const useJourney = create<JourneyState>()(
       pose: "idle",
       hidden: true,
       screen: {},
+      spots: {},
 
       setPhase: (phase) => set({ phase }),
       enterRoom: (id) => set({ phase: "room", room: id, step: 0, hovered: null, bagOpen: false, spot: null }),
@@ -105,6 +114,18 @@ export const useJourney = create<JourneyState>()(
           const prev = s.screen[id];
           if (prev && Math.abs(prev.x - p.x) < 2 && Math.abs(prev.y - p.y) < 2) return s;
           return { screen: { ...s.screen, [id]: p } };
+        }),
+      setSpots: (next) =>
+        set((s) => {
+          const keys = Object.keys(next);
+          const same =
+            keys.length === Object.keys(s.spots).length &&
+            keys.every((k) => {
+              const a = s.spots[k];
+              const b = next[k];
+              return a && a.front === b.front && Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) < 1;
+            });
+          return same ? s : { spots: next };
         }),
       direct: (o) =>
         set((s) => ({

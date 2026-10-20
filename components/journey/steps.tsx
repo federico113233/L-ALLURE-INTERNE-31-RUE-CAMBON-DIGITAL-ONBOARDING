@@ -62,7 +62,7 @@ export function ExploreStep({ step, chapterId, onComplete, completed }: StepProp
         ))}
       </div>
       <p className="label mt-3 text-graphite">
-        {n} / {step.hotspots.length} secrets · drag the object to turn it
+        {n} / {step.hotspots.length} secrets · you may also drag the object
       </p>
       <AnimatePresence mode="wait">
         {active ? (

@@ -4,7 +4,6 @@ import {
   ContactShadows,
   Environment,
   Float,
-  Html,
   Lightformer,
   PresentationControls,
   Sparkles,
@@ -14,13 +13,13 @@ import { easing } from "maath";
 import { Suspense, useRef } from "react";
 import * as THREE from "three";
 import { CHAPTERS, ORAL_UNLOCK, type Chapter, type ChapterId, type Hotspot } from "@/lib/journey/content";
-import { chaptersDone, useJourney } from "@/lib/journey/store";
+import { chaptersDone, useJourney, type SpotPoint } from "@/lib/journey/store";
 import type { DeptId } from "@/lib/departments";
 import { Bag, Bottle, Camellia, Letter, Pearls, Stair } from "./objects";
 
 // How large each icon appears once you step inside its chapter.
 const ROOM_SCALE: Record<Chapter["object"], number> = {
-  bottle: 1.15,
+  bottle: 0.92,
   bag: 0.82,
   camellia: 0.85,
   stair: 0.9,
@@ -61,7 +60,7 @@ function CameraRig() {
     } else {
       // fit the whole arc of objects to the viewport width
       const aspect = size.width / size.height;
-      const dist = Math.max(10.5, 6.1 / (Math.tan((35 / 2) * (Math.PI / 180)) * aspect) + 1);
+      const dist = Math.max(10.5, 6.6 / (Math.tan((35 / 2) * (Math.PI / 180)) * aspect) + 1);
       pos.current.set(px * 0.6, 0.8 + py * 0.3, dist);
       tgt.current.set(0, -0.25, 0);
     }
@@ -70,44 +69,6 @@ function CameraRig() {
     camera.lookAt(look.current);
   });
   return null;
-}
-
-/* ───────────── Hotspot ───────────── */
-function HotspotDot({
-  h,
-  found,
-  active,
-  visible,
-  onClick,
-}: {
-  h: Hotspot;
-  found: boolean;
-  active: boolean;
-  visible: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <Html position={h.position} center zIndexRange={[30, 0]} style={{ display: visible ? "block" : "none" }}>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onClick();
-        }}
-        aria-label={h.title}
-        className="group relative flex h-9 w-9 items-center justify-center"
-      >
-        {!found && <span className="absolute h-9 w-9 animate-ping rounded-full border border-or opacity-60" />}
-        <span
-          className={`relative h-4 w-4 rounded-full border-2 transition-all duration-500 ${
-            active ? "scale-125 border-blanc bg-noir" : found ? "border-or bg-blanc" : "border-blanc bg-or shadow-[0_0_18px_4px_rgba(197,160,89,0.75)]"
-          }`}
-        />
-        <span className="label pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap bg-blanc/95 px-3 py-1.5 text-[0.6rem] text-noir opacity-0 shadow-sm transition-opacity duration-300 group-hover:opacity-100">
-          {h.title.split(" · ")[0]}
-        </span>
-      </button>
-    </Html>
-  );
 }
 
 /* ───────────── An object on its pedestal of air ───────────── */
@@ -133,10 +94,11 @@ function Slot({
   const hovered = useJourney((s) => s.hovered);
   const step = useJourney((s) => s.step);
   const bagOpen = useJourney((s) => s.bagOpen);
-  const found = useJourney((s) => s.found);
-  const spot = useJourney((s) => s.spot);
   const done = useJourney((s) => s.done);
   const setScreen = useJourney((s) => s.setScreen);
+  const setSpots = useJourney((s) => s.setSpots);
+  const tmp = useRef(new THREE.Vector3());
+  const center = useRef(new THREE.Vector3());
 
   const isRoom = phase === "room" && room === chapter.id;
   const visible = phase === "hub" || phase === "finale" || isRoom;
@@ -163,14 +125,29 @@ function Slot({
         y: ((1 - v.current.y) / 2) * size.height,
       });
     }
-    void state;
+    // Hotspots: project them to the screen for the HTML overlay, and note
+    // whether each one is on the side of the object facing the camera.
+    const current = isRoom ? chapter.steps[step] : undefined;
+    if (current?.kind === "explore" && spin.current && frame.current % 2 === 0) {
+      group.current.getWorldPosition(center.current);
+      const toCam = state.camera.position.clone().sub(center.current);
+      const out: Record<string, SpotPoint> = {};
+      for (const h of current.hotspots) {
+        tmp.current.set(...h.position);
+        spin.current.localToWorld(tmp.current);
+        const front = tmp.current.clone().sub(center.current).dot(toCam) > -0.05;
+        tmp.current.project(camera);
+        out[h.id] = {
+          x: ((tmp.current.x + 1) / 2) * size.width,
+          y: ((1 - tmp.current.y) / 2) * size.height,
+          front,
+        };
+      }
+      setSpots(out);
+    } else if (isRoom && current?.kind !== "explore" && frame.current % 30 === 0) {
+      setSpots({});
+    }
   });
-
-  // Html overlays stay mounted (toggled by visibility) — mounting/unmounting
-  // drei <Html> roots during a render races React.
-  const current = isRoom ? chapter.steps[step] : undefined;
-  const exploring = current?.kind === "explore";
-  const hotspots = chapter.steps.flatMap((s) => (s.kind === "explore" ? s.hotspots : []));
 
   const model = (() => {
     switch (chapter.object) {
@@ -227,16 +204,6 @@ function Slot({
               <mesh visible={false}>
                 <sphereGeometry args={[1.1, 12, 12]} />
               </mesh>
-              {hotspots.map((h) => (
-                <HotspotDot
-                  key={h.id}
-                  h={h}
-                  visible={exploring}
-                  found={Boolean(found[`${chapter.id}:${h.id}`])}
-                  active={spot === h.id}
-                  onClick={() => handlers.onHotspot(h)}
-                />
-              ))}
             </group>
           </Float>
         </PresentationControls>

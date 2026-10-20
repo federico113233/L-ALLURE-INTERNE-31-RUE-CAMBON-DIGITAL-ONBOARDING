@@ -14,6 +14,7 @@ import { ASK_SUGGESTIONS } from "@/lib/floors";
 import { CHAPTER_BY_ID, CHAPTERS, HUB_LINES, ORAL_UNLOCK, type ChapterId, type CodeId, type Hotspot } from "@/lib/journey/content";
 import { chaptersDone, useJourney } from "@/lib/journey/store";
 import { Finale } from "./Finale";
+import { HotspotLayer } from "./HotspotLayer";
 import { HubLabels } from "./HubLabels";
 import { CodeToast, Hud } from "./Hud";
 import { Prologue } from "./Prologue";
@@ -230,6 +231,7 @@ export default function Experience() {
     <main className="relative h-dvh w-full overflow-hidden bg-blanc">
       <World handlers={handlers} dept={session.dept} unlockAll={demo} />
       <HubLabels dept={session.dept} unlockAll={demo} />
+      <HotspotLayer onHotspot={handlers.onHotspot} />
 
       {/* soft vignette for depth */}
       <div className="pointer-events-none fixed inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(229,220,203,0.35)_100%)]" />

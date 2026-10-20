@@ -34,7 +34,7 @@ export function HubLabels({ dept, unlockAll }: { dept: DeptId | null; unlockAll:
             return (
               <div
                 key={c.id}
-                className="absolute flex w-56 -translate-x-1/2 flex-col items-center text-center"
+                className="absolute flex w-44 -translate-x-1/2 flex-col items-center text-center"
                 style={{ left: p.x, top: p.y }}
               >
                 <span className="label text-or">{c.numeral}</span>
@@ -43,7 +43,7 @@ export function HubLabels({ dept, unlockAll }: { dept: DeptId | null; unlockAll:
                 >
                   {c.name}
                 </span>
-                <span className="label mt-1 text-[0.58rem] text-graphite">{c.subtitle}</span>
+                <span className="label mt-1 text-[0.55rem] leading-relaxed text-graphite">{c.subtitle}</span>
                 <span className="label mt-2 text-[0.55rem]">
                   {locked ? (
                     <span className="text-graphite/70">Verrouillé · {ORAL_UNLOCK} chapitres</span>
