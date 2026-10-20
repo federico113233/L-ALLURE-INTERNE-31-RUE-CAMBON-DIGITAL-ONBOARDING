@@ -49,7 +49,7 @@ export const ASK_SUGGESTIONS: Record<DeptId, string[]> = {
 
 export function debriefLine(avg: number): string {
   if (avg >= 15)
-    return "Bien. Very bien. You speak the language of the Maison without an accent. Go to your Director. Say less than you know. That is how they will know you belong.";
+    return "Bien. You speak the language of the Maison without an accent. Go to your Director. Say less than you know. That is how they will know you belong.";
   if (avg >= 12)
     return "You are close, mon cher. The instinct is there; the vocabulary still wavers. Remove the words that are not ours, and you will be ready.";
   return "Not yet. You still think like a marketer from another house. Go back to the second floor, read your words in red, and come back to me. I am patient. A little.";

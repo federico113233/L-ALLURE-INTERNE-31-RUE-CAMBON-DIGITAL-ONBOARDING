@@ -41,7 +41,7 @@ export function CodesFloor({ dept }: { dept: DeptId }) {
             </p>
           </div>
           <div className="bg-blanc p-6 sm:pl-10">
-            <p className="label text-or">Brand Equity · Keller</p>
+            <p className="label text-or">Brand Equity · Kapferer</p>
             <p className="quote mt-3 text-2xl">“How I am perceived.”</p>
             <p className="mt-3 text-sm leading-relaxed text-graphite">
               Decided by clients, built bottom-up from what they see and live: every product, every gesture, every email you write.

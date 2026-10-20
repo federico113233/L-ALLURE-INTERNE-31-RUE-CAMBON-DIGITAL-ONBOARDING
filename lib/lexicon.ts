@@ -38,7 +38,7 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
     text: "We need a viral TikTok launch with discounts to maximise brand penetration like Sauvage did, and make customers dream with Coco.",
     result: {
       allureScore: 18,
-      verdict: "Five errors in one sentence. Trop de bruit, pas assez d'Allure.",
+      verdict: "Six errors in one sentence. Trop de bruit, pas assez d'Allure.",
       errors: [
         {
           quote: "viral TikTok launch",
@@ -178,7 +178,7 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
           framework: "Track 3 — intentional selectivity",
           explanation:
             "There are no online sales for Mode. One-click is Kahneman's System 1 — FMCG impulse logic (physical availability), the opposite of Chanel.",
-          correction: "a seamless way to book an appointment in boutique",
+          correction: "a personal way to book an appointment in boutique",
         },
         {
           quote: "48h flash sale",
@@ -214,7 +214,7 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
         },
       ],
       rewrite:
-        "Q3 priorities: a seamless way to book an appointment in boutique; a private moment of discovery for our most loyal clients; and a personal word from their advisor — to nourish relationships that last.",
+        "Q3 priorities: a personal way to book an appointment in boutique; a private moment of discovery for our most loyal clients; and a personal word from their advisor — to nourish relationships that last.",
       spoken:
         "Frictionless, flash sale, funnel. You have built a beautiful machine for selling detergent. At the Maison, friction is not the enemy. Haste is. We do not push a client. We receive her, we remember her, we repair what she loves. Remove the urgency, mon cher. Keep the time.",
       source: "preset",

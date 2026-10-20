@@ -74,7 +74,7 @@ export const FACETS: {
     definition:
       "Independent, bold, intellectual, effortless chic. Free. Never ostentatious — always understated.",
     mademoiselle:
-      "Luxury must be comfortable, otherwise it is not luxury. And it must never shout. Elegance is refusal.",
+      "Independence first. Then boldness. And never, ever, ostentation. The Maison does not shout; it is recognised.",
   },
   {
     id: "relationship",
@@ -214,7 +214,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
       {
         name: "Pégomas fields",
         detail:
-          "Jasmine and May rose grown with the Mul family near Grasse. The supply chain is part of the story.",
+          "The fields of Pégomas, near Grasse, worked with the Mul family. The supply chain is part of the story.",
         origin: "Grasse",
       },
       {
@@ -271,7 +271,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
         diorReflex:
           "Yes — Black Friday is the biggest traffic moment of the year. A bundle with a free mini and 15% off will convert new customers and boost our market share against the competition.",
         chanelAnswer:
-          "We decline the bundle, elegantly. A discount teaches the client that N°1 de Chanel is worth less than its price — it erodes brand equity. Instead, we offer the partner a moment of expertise: a skin consultation and the ritual of the red camellia, grown in our open-sky laboratory. We bring them desirability and service, not a markdown. The Maison does not participate in Black Friday; it simply remains.",
+          "We decline the bundle, elegantly. A discount teaches the client that N°1 de Chanel is worth less than its price — it erodes brand equity. Instead, we offer the partner a moment of expertise: a skin consultation and the ritual of the red camellia, grown in our open-sky laboratory. We bring them desirability and service, not a markdown. The Maison does not chase promotional moments; it simply remains.",
       },
       {
         id: "beaute-3",
@@ -325,7 +325,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
       {
         name: "Matelassé & camellia",
         detail:
-          "Codes repeated in every category — “strong houses repeat the same codes everywhere”.",
+          "Codes repeated in every category — “strong houses repeat the same codes in every category”.",
         origin: "Kapferer",
       },
       {
@@ -345,7 +345,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
       culture:
         "The Premières d'Atelier and the hands of le19M. Aubazine, Deauville, Rue Cambon — every code has a biography.",
       reflection:
-        "A woman who chooses comfort as an act of independence; who wears trousers when it is not yet allowed.",
+        "A woman who chooses comfort as an act of independence: jersey, trousers, straight lines — never the corset.",
       selfImage:
         "“I move freely, therefore I am elegant.” Clothing as conquest of freedom.",
     },
@@ -358,13 +358,13 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
         id: "mode-1",
         title: "No e-commerce",
         question:
-          "A journalist asks why the CHANEL 25 bag cannot be bought online and why there are waiting lists. How does the Maison answer?",
+          "A journalist asks why the CHANEL 25 bag cannot be bought online and why its launch is so controlled. How does the Maison answer?",
         stakes:
           "Selective intentionality versus maximal availability. Fashion and fine jewellery are not sold online; digital nourishes the relationship.",
         diorReflex:
           "We should apologise and announce an e-commerce drop soon — demand is huge, so we would maximise availability and capture sales before competitors do. Scarcity is just a supply problem.",
         chanelAnswer:
-          "We answer without apology. The CHANEL 25 is not withheld; it is offered with intention. A Chanel bag is chosen in a boutique, with time and advice — that is relational iconicity. Selective distribution and controlled launches protect desirability over time, as The Luxury Strategy teaches. Digital is where the relationship begins: you book an appointment, you are received. The waiting is part of the value.",
+          "We answer without apology. The CHANEL 25 is not withheld; it is offered with intention. A Chanel bag is chosen in a boutique, with time and advice — that is relational iconicity. Selective distribution and controlled launches protect desirability over time, as The Luxury Strategy teaches. Digital is where the relationship begins: you book an appointment, you are received. Scarcity is part of the value.",
       },
       {
         id: "mode-2",
@@ -376,7 +376,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
         diorReflex:
           "It makes sense: the customer will not see the difference, the supplier can scale production, and the factory savings can be reinvested in marketing and influencer campaigns.",
         chanelAnswer:
-          "I would advise against it. The Maison gathered Lesage, Montex and Lemarié inside le19M precisely so that their savoir-faire would never become a line on a cost sheet. These are ateliers, not suppliers. The hand of a Première d'Atelier is our physique and our culture in Kapferer's prism. If we save on the embroidery, we spend our identity — and brand equity, built bottom-up, would follow.",
+          "I would advise against it. The Maison gathered Lesage, Montex and Lemarié inside le19M precisely so that their savoir-faire would never become a line on a cost sheet. These are ateliers, not suppliers. The hand of a Première d'Atelier is our culture in Kapferer's prism — and, once the work is finished, our physique. If we save on the embroidery, we spend our identity — and brand equity, built bottom-up, would follow.",
       },
       {
         id: "mode-3",
@@ -401,12 +401,12 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
     promptContext:
       "Track 3 — Corporate, Digital & Client Experience. Where FMCG models (Heineken, Henkel, Chinese 'Mindshare Engineering') maximise physical availability and frictionless impulse purchase (Kahneman's System 1), Chanel protects brand equity through intentional selectivity: no online sales for Fashion and Fine Jewellery; digital exists to book appointments in boutique and nourish the relationship. Relational iconicity: time, expert advice, repair and maintenance, a bond that lasts. Internal posture (savoir-être): precision, listening, humility before the heritage of the Maison, collective work over individual ego.",
     welcome:
-      "Bienvenue, mon cher. Client Experience. You will hear a great deal about friction, about funnels, about conversion. Forget the funnel. At the Maison, we do not convert anyone. We receive. My salon at 31 Rue Cambon had a staircase of mirrors so that I could watch, unseen, how each woman was welcomed. Now it is your turn to watch.",
+      "Bienvenue, mon cher. Client Experience. You will hear a great deal about friction, about funnels, about conversion. Forget the funnel. At the Maison, we do not convert anyone. We receive. My salon at 31 Rue Cambon has a staircase of mirrors. Every facet sees the client. Now it is your turn to look.",
     codes: [
       {
         name: "31 Rue Cambon",
         detail:
-          "The boutique, the salons, the Apartment, and the Mirrored Staircase — where Mademoiselle watched her shows, unseen.",
+          "The boutique, the salons, the Apartment and the Mirrored Staircase. The model for every reception.",
         origin: "Paris",
       },
       {
@@ -493,7 +493,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
         diorReflex:
           "Traffic, conversion rate, email open rate, number of followers and the virality of our posts — the more reach and the more sales per campaign, the better.",
         chanelAnswer:
-          "I would present relationship indicators: appointments booked and honoured, repairs and care requests, client retention over years, the quality of recognition in boutique — how many clients are known by name. And I would watch brand equity in Keller's sense: salience and resonance. I would refuse to lead with traffic, virality or discount-driven conversion: they measure noise, not desirability.",
+          "I would present relationship indicators: appointments booked and honoured, repairs and care requests, client retention over years, the quality of recognition in boutique — how many clients are known by name. And I would watch brand equity in Keller's sense, and desirability over time. I would refuse to lead with traffic, virality or discount-driven conversion: they measure noise, not desirability.",
       },
     ],
   },
