@@ -44,7 +44,7 @@ const SOURCE_LABEL: Record<NonNullable<LexiconResult["source"]>, string> = {
   preset: "Demo script",
 };
 
-export function LexiconFloor({ dept }: { dept: DeptId }) {
+export function LexiconFloor({ dept, compact = false, onResult }: { dept: DeptId; compact?: boolean; onResult?: () => void }) {
   const { name, instantDemo } = useSession();
   const voice = useVoice();
   const d = DEPARTMENTS[dept];
@@ -88,6 +88,7 @@ export function LexiconFloor({ dept }: { dept: DeptId }) {
       }
       setAnalysed(t);
       setResult(res);
+      onResult?.();
       voice.setThinking(false);
       void voice.speak(res.spoken);
     } catch (e) {
@@ -110,8 +111,8 @@ export function LexiconFloor({ dept }: { dept: DeptId }) {
   }
 
   return (
-    <div className="space-y-16 pb-24">
-      <section>
+    <div className={compact ? "space-y-10 pb-6" : "space-y-16 pb-24"}>
+      <section className={compact ? "hidden" : ""}>
         <Eyebrow>Étage II · Le Lexique</Eyebrow>
         <h2 className="display mt-6 text-5xl sm:text-6xl">
           The Chanel <span className="quote">Lexicon</span> Translator
@@ -126,7 +127,7 @@ export function LexiconFloor({ dept }: { dept: DeptId }) {
           <p className="label text-graphite">Demo presets · one click</p>
           {instantDemo && <p className="label text-or">Instant demo on</p>}
         </div>
-        <div className="mt-4 grid gap-px border hairline bg-ligne sm:grid-cols-2">
+        <div className={`mt-4 grid gap-px border hairline bg-ligne ${compact ? "" : "sm:grid-cols-2"}`}>
           {presets.map((p) => (
             <button
               key={p.id}
@@ -191,7 +192,7 @@ export function LexiconFloor({ dept }: { dept: DeptId }) {
             className="space-y-12"
           >
             {/* Score + verdict */}
-            <div className="grid gap-8 border-t border-noir pt-10 md:grid-cols-[14rem_1fr]">
+            <div className={`grid gap-8 border-t border-noir pt-10 ${compact ? "" : "md:grid-cols-[14rem_1fr]"}`}>
               <div>
                 <p className="label text-graphite">Allure index</p>
                 <p className="display mt-2 text-7xl">
@@ -255,7 +256,7 @@ export function LexiconFloor({ dept }: { dept: DeptId }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: EASE }}
                     onMouseEnter={() => setFocus(i)}
-                    className={`grid gap-4 border-b hairline py-6 transition-colors duration-500 md:grid-cols-[3rem_1fr_1fr] ${focus === i ? "bg-beige/70" : ""}`}
+                    className={`grid gap-4 border-b hairline py-6 transition-colors duration-500 ${compact ? "grid-cols-[2.5rem_1fr]" : "md:grid-cols-[3rem_1fr_1fr]"} ${focus === i ? "bg-beige/70" : ""}`}
                   >
                     <span className="label pl-2 pt-1 text-rouge">{String(i + 1).padStart(2, "0")}</span>
                     <div>
@@ -266,7 +267,7 @@ export function LexiconFloor({ dept }: { dept: DeptId }) {
                       </p>
                       <p className="label mt-3 text-graphite">{e.category}</p>
                     </div>
-                    <div>
+                    <div className={compact ? "col-start-2" : ""}>
                       <p className="label text-or">{e.framework}</p>
                       <p className="mt-2 text-sm leading-relaxed text-graphite">{e.explanation}</p>
                     </div>

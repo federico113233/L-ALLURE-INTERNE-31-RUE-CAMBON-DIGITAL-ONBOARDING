@@ -20,10 +20,11 @@
 }
 
 @layer base {
+  /* Sharp corners by default; only explicit utilities (e.g. rounded-full dots) may round. */
   *,
   *::before,
   *::after {
-    border-radius: 0 !important;
+    border-radius: 0;
   }
 
   html {

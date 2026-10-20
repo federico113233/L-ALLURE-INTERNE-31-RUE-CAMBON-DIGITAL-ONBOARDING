@@ -18,7 +18,15 @@ type Eval = OralEvaluation & { degraded?: boolean };
 
 const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1));
 
-export function GrandOralFloor({ dept }: { dept: DeptId }) {
+export function GrandOralFloor({
+  dept,
+  compact = false,
+  onFinish,
+}: {
+  dept: DeptId;
+  compact?: boolean;
+  onFinish?: (avg: number) => void;
+}) {
   const d = DEPARTMENTS[dept];
   const { name, instantDemo } = useSession();
   const voice = useVoice();
@@ -31,7 +39,12 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
   const topRef = useRef<HTMLDivElement | null>(null);
 
   // Bring each new phase into view (the floor scrolls inside its own column).
+  const firstPhase = useRef(true);
   useEffect(() => {
+    if (firstPhase.current) {
+      firstPhase.current = false;
+      return;
+    }
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [phase]);
 
@@ -92,6 +105,7 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
       const scores = evals.filter(Boolean).map((e) => e!.score);
       const avg = scores.reduce((a, b) => a + b, 0) / Math.max(1, scores.length);
       void voice.speak(`${fmt(Math.round(avg * 2) / 2)} out of 20. ${debriefLine(avg)}`);
+      onFinish?.(Math.round(avg * 2) / 2);
     }
   }
 
@@ -108,8 +122,8 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
   const avg = scores.length ? Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 2) / 2 : 0;
 
   return (
-    <div ref={topRef} className="scroll-mt-32 pb-24">
-      <Eyebrow>Étage III · Le Grand Oral</Eyebrow>
+    <div ref={topRef} className={compact ? "scroll-mt-4 pb-6" : "scroll-mt-32 pb-24"}>
+      {!compact && <Eyebrow>Étage III · Le Grand Oral</Eyebrow>}
 
       {/* Progress */}
       {phase.kind !== "intro" && (
@@ -139,7 +153,7 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <h2 className="display mt-6 text-5xl sm:text-6xl">
+            <h2 className={`display mt-6 ${compact ? "hidden" : "text-5xl sm:text-6xl"}`}>
               Le Grand <span className="quote">Oral</span>
             </h2>
             <p className="mt-6 max-w-2xl leading-relaxed text-graphite">
@@ -147,7 +161,7 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
             </p>
             <ol className="mt-10 border-t hairline">
               {d.oral.map((o, k) => (
-                <li key={o.id} className="grid gap-2 border-b hairline py-5 md:grid-cols-[3rem_14rem_1fr]">
+                <li key={o.id} className={`grid gap-2 border-b hairline py-5 ${compact ? "" : "md:grid-cols-[3rem_14rem_1fr]"}`}>
                   <span className="label text-or">{["I", "II", "III"][k]}</span>
                   <span className="label-strong text-[0.75rem]">{o.title}</span>
                   <span className="text-sm text-graphite">{o.question}</span>
@@ -172,7 +186,7 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
             <p className="label text-graphite">
               Question {i + 1} / {d.oral.length} · {q.title}
             </p>
-            <h2 className="display mt-5 text-[2.1rem] leading-tight sm:text-[2.6rem]">{q.question}</h2>
+            <h2 className={`display mt-5 leading-tight ${compact ? "text-[1.7rem]" : "text-[2.1rem] sm:text-[2.6rem]"}`}>{q.question}</h2>
             <button
               onClick={() => void voice.speak(`Question ${i + 1}. ${q.question}`)}
               className="label mt-5 inline-flex items-center gap-2 text-graphite hover:text-or"
@@ -248,10 +262,10 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
             transition={{ duration: 0.8, ease: EASE }}
             className="mt-12 space-y-12"
           >
-            <div className="grid gap-8 border-t border-noir pt-10 md:grid-cols-[13rem_1fr]">
+            <div className={`grid gap-8 border-t border-noir pt-10 ${compact ? "" : "md:grid-cols-[13rem_1fr]"}`}>
               <div>
                 <p className="label text-graphite">Note</p>
-                <p className="display mt-2 text-8xl">
+                <p className={`display mt-2 ${compact ? "text-7xl" : "text-8xl"}`}>
                   {fmt(ev.score)}
                   <span className="text-3xl text-graphite">/20</span>
                 </p>
@@ -270,7 +284,7 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
               </div>
             </div>
 
-            <div className="grid gap-px bg-ligne md:grid-cols-2">
+            <div className={`grid gap-px bg-ligne ${compact ? "" : "md:grid-cols-2"}`}>
               <div className="bg-blanc p-6">
                 <p className="label text-or">What the Maison heard</p>
                 <ul className="mt-4 space-y-3">
@@ -327,7 +341,7 @@ export function GrandOralFloor({ dept }: { dept: DeptId }) {
             className="mt-12"
           >
             <p className="label text-graphite">Le verdict · {name || "Intern"} · {d.name}</p>
-            <p className="display mt-4 text-[7rem] leading-none">
+            <p className={`display mt-4 leading-none ${compact ? "text-7xl" : "text-[7rem]"}`}>
               {fmt(avg)}
               <span className="text-4xl text-graphite">/20</span>
             </p>

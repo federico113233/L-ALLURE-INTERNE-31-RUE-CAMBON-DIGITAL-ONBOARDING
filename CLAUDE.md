@@ -10,10 +10,13 @@ HEC Paris Business Project prototype for CHANEL: a voice-first onboarding web ap
 - `lib/server/claude.ts` — one structured call (`beta.messages.parse` + Zod schema from `lib/schemas.ts`, server-side refusal fallback). Model `claude-opus-5-5` (override with `CLAUDE_MODEL`).
 - `app/api/{ask,lexicon,oral}` — Claude routes; each falls back to an offline engine (`lib/lexicon.ts` rules, `lib/oral.ts` heuristic) if Claude is unavailable, flagged `degraded: true`.
 - `app/api/{tts,stt,health}` — ElevenLabs proxy (keys stay server-side) and config check.
-- `lib/client/voice.tsx` — voice engine: TTS → word timings → kinetic typography; analyser level → ink waves; silent-reading fallback. Checks `public/tts-cache/` first.
-- `components/stage/` — the Living Silhouette (octagon, mirror facets, ink waves, kinetic caption).
-- `components/floors/` — Étage I (codes & Kapferer prism), II (Lexicon Translator), III (Grand Oral).
-- Content: `lib/departments.ts`, `lib/floors.ts`, `lib/lexicon.ts` (presets with authored results).
+- `lib/client/voice.tsx` — voice engine: TTS → word timings → kinetic typography; silent-reading fallback. Checks `public/tts-cache/` first.
+- `lib/client/sfx.ts` — generative Web Audio ambience + UI sounds (no audio files); ducks under her voice.
+- **Le Parcours** (the gamified journey) — `components/journey/Experience.tsx` orchestrates phases `prologue → hub → room → finale`; state in `lib/journey/store.ts` (zustand, progress persisted); content in `lib/journey/content.ts` (chapters, hotspots, mini-games, codes, levels).
+- `components/world/` — the 3D Galerie Blanche (react-three-fiber + drei): procedural models in `objects.tsx` (N°5, 2.55 that opens, camellia, mirrored staircase, sealed letter, pearls), camera direction, hotspots. Objects publish their projected screen positions to the store.
+- `components/character/` — Mademoiselle, an articulated full-figure silhouette (walk / point / present / enter) with a speech bubble; directed via `store.direct()`.
+- `components/journey/steps.tsx` — mini-games (explore, sort, choice, match, colours, prism, KPI); Lexicon and Grand Oral reuse `components/floors/*` in `compact` mode.
+- Presenter: `/?galerie` skips the prologue; **Démo** (or Shift+D) opens every door and serves presets instantly.
 
 ## Rules
 - Every fact shown or spoken must come from the KB. Never "Coco" in Chanel-voice text.

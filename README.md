@@ -5,18 +5,17 @@
 HEC Paris · Strategic Brand Management (Prof. G. Kretz) · Business Project for CHANEL.
 Prototype — not an official CHANEL product.
 
-## The experience
+## The experience — *Le Parcours*
 
-| | |
-|---|---|
-| **L'Ingresso** | The intern enters their name and Métier: *Parfums Beauté*, *Mode & le19M*, or *Client Experience & Digital*. Everything that follows adapts to the department. |
-| **Mademoiselle** | Gabrielle Chanel as AI mentor (Claude). She speaks in the first person — N°5 with Ernest Beaux in 1921, 31 Rue Cambon, Aubazine, Deauville — and connects her memories to Kapferer, Keller and Holt. Her voice is a tailored ElevenLabs voice. |
-| **The Living Silhouette** | A black-and-white cut-paper silhouette (boater, pearls, camellia, tailor's scissors) inside the octagon of Place Vendôme / the N°5 stopper, framed by the facets of the Mirrored Staircase. When she speaks, ink waves ripple to her voice and her words appear in gold and white kinetic typography, synchronised word by word. |
-| **Étage I · Les Codes** | Identity vs. Equity, an interactive Kapferer prism applied to the department, the Maison's codes, the four levels of iconicity, and the Chanel ≠ Dior guardrails. Ask Mademoiselle anything. |
-| **Étage II · Le Lexique** | The Chanel Lexicon Translator: paste an email, a slide or copy; cultural errors are marked in red with the framework they violate, then rewritten in the Maison's voice and explained aloud. |
-| **Étage III · Le Grand Oral** | Three critical questions before meeting the department Director. Answer by voice (ElevenLabs Scribe) or text; graded out of 20 with strengths, gaps and Mademoiselle's model answer. |
+A gamified journey, like a luxury video game, in the Maison's codes.
 
-One-click **demo presets** contrast the "Dior reflex" with the Chanel answer on floors II and III. **Démo instantanée** serves preset results from the authored script with zero latency, for the live presentation.
+1. **Prologue** — a black envelope sealed in gold. Break the seal: a letter of admission from Mademoiselle. Sign it, choose your Métier (*Parfums Beauté*, *Mode & le19M*, *Client Experience & Digital*), and the black doors of 31 Rue Cambon open onto white.
+2. **La Galerie Blanche** — an all-white 3D space where the Maison's icons float: the **N°5** bottle, the **2.55**, the **camellia**, the **Mirrored Staircase**, a **sealed letter** and the **pearls**. Each object is a door.
+3. **Mademoiselle** — a full-figure silhouette (boater, tweed, pearls, scissors, two-tone slingbacks) who walks the gallery, follows you, points at what you hover, steps *inside* the object with you, gestures as she speaks (ElevenLabs voice, word-synchronised bubble). Click her to ask anything (Claude).
+4. **Chapters** — touch the gold points on the 3D object (the 2.55 opens on its burgundy lining), then play: *Abstrait ou figuratif ?*, *Atelier ou usine ?*, the le19M match, the five colours, Kapferer's prism, client-room situations, the KPIs you would present, the **Lexicon Translator** and **Le Grand Oral**.
+5. **Progress** — collect ten **codes**, earn **Allure** points and ranks (*Apprentie → Initiée → Insider → Gardienne des Codes*). The pearls (Le Grand Oral) open after three chapters; the journey ends with your printable **Carte d'Insider**.
+
+Sound design (ambient salon pad, harp notes, bells) is synthesised live in Web Audio. **Démo** (Shift+D) opens every door and makes presets instant for a live presentation; `/?galerie` skips the prologue.
 
 ## Run it
 

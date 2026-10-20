@@ -20,6 +20,7 @@ const force = process.argv.includes("--force");
 const { DEPARTMENTS, FACETS } = await import("../lib/departments.ts");
 const { FLOORS } = await import("../lib/floors.ts");
 const { LEXICON_PRESETS } = await import("../lib/lexicon.ts");
+const { CHAPTERS, COLOURS, HUB_LINES, PROLOGUE } = await import("../lib/journey/content.ts");
 
 const lines = new Set();
 for (const d of Object.values(DEPARTMENTS)) {
@@ -29,6 +30,18 @@ for (const d of Object.values(DEPARTMENTS)) {
 FLOORS.forEach((f) => lines.add(f.intro));
 FACETS.forEach((f) => lines.add(f.mademoiselle));
 LEXICON_PRESETS.forEach((p) => lines.add(p.result.spoken));
+// Le Parcours — the journey through the Galerie
+lines.add(PROLOGUE.letter);
+lines.add(PROLOGUE.doors);
+lines.add(HUB_LINES.return);
+lines.add(HUB_LINES.locked);
+for (const d of Object.values(DEPARTMENTS)) lines.add(HUB_LINES.arrival(d.name));
+for (const c of CHAPTERS) {
+  lines.add(c.intro);
+  lines.add(c.outro);
+  for (const st of c.steps) if (st.kind === "explore") st.hotspots.forEach((h) => lines.add(h.spoken));
+}
+COLOURS.forEach((c) => lines.add(`${c.name}. ${c.text}`));
 
 // Must match lib/client/voice.tsx → sha(): first 10 bytes of SHA-256, hex.
 const hash = (t) => createHash("sha256").update(t, "utf8").digest().subarray(0, 10).toString("hex");
