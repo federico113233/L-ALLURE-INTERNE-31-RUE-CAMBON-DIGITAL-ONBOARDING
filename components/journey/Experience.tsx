@@ -40,7 +40,13 @@ export default function Experience() {
   const phase = useJourney((s) => s.phase);
   const room = useJourney((s) => s.room);
   const hovered = useJourney((s) => s.hovered);
-  const screen = useJourney((s) => s.screen);
+  // Only the x of the object she should face/stand by, snapped to 24 px, so the
+  // whole experience does not re-render every time the 3D scene re-projects.
+  const focusX = useJourney((s) => {
+    const id = s.phase === "room" ? s.room : s.hovered;
+    const p = id ? s.screen[id] : undefined;
+    return p ? Math.round(p.x / 24) * 24 : null;
+  });
   const done = useJourney((s) => s.done);
   const spot = useJourney((s) => s.spot);
   const direct = useJourney((s) => s.direct);
@@ -88,24 +94,23 @@ export default function Experience() {
       return;
     }
     if (phase === "room" && room) {
-      const obj = screen[room];
       const y = mobile ? vp.h * 0.42 : floorY;
       direct({
         target: { x: mobile ? 70 : Math.max(120, vp.w * 0.1), y },
-        look: obj?.x ?? vp.w,
+        look: focusX ?? vp.w,
         pose: spot ? "point" : voice.status === "speaking" ? "present" : "idle",
       });
       return;
     }
     // hub & finale
-    if (hovered && screen[hovered]) {
-      const sx = screen[hovered]!.x;
+    if (hovered && focusX !== null) {
+      const sx = focusX;
       const x = Math.min(vp.w - 80, Math.max(80, sx - (mobile ? 90 : 150)));
       direct({ target: { x, y: floorY }, look: sx, pose: "point" });
     } else {
       direct({ target: { x: mobile ? 60 : Math.max(90, vp.w * 0.055), y: floorY }, look: vp.w / 2, pose: "idle" });
     }
-  }, [phase, room, hovered, screen, vp.w, vp.h, mobile, floorY, direct, spot, voice.status]);
+  }, [phase, room, hovered, focusX, vp.w, vp.h, mobile, floorY, direct, spot, voice.status]);
 
   // Presenter shortcut: /?galerie skips the prologue when a name and Métier are already known.
   useEffect(() => {

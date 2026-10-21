@@ -220,6 +220,27 @@ function Slot({
   );
 }
 
+// Soft floor shadows. Re-baked for ~2 s after each scene change (objects scale
+// in and out), then frozen: the icons only drift a few centimetres, and a
+// per-frame shadow pass is the most expensive thing in the gallery.
+function FloorShadows() {
+  const phase = useJourney((s) => s.phase);
+  const room = useJourney((s) => s.room);
+  return (
+    <ContactShadows
+      key={`${phase}-${room ?? ""}`}
+      frames={150}
+      position={[0, -1.75, 0]}
+      opacity={0.22}
+      scale={22}
+      blur={2.8}
+      far={4}
+      resolution={512}
+      color="#000000"
+    />
+  );
+}
+
 function Scene({ handlers, dept, unlockAll }: { handlers: WorldHandlers; dept: DeptId | null; unlockAll: boolean }) {
   return (
     <>
@@ -243,7 +264,7 @@ function Scene({ handlers, dept, unlockAll }: { handlers: WorldHandlers; dept: D
         <Slot key={c.id} chapter={c} handlers={handlers} dept={dept} unlockAll={unlockAll} />
       ))}
       <Sparkles count={70} scale={[16, 6, 10]} size={2.2} speed={0.18} opacity={0.55} color="#C5A059" />
-      <ContactShadows position={[0, -1.75, 0]} opacity={0.22} scale={22} blur={2.8} far={4} resolution={512} color="#000000" />
+      <FloorShadows />
     </>
   );
 }
