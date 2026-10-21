@@ -103,7 +103,7 @@ await shot("d-oral", async () => {
   await page.getByRole("button", { name: /The Chanel answer/ }).click();
   await wait(700);
   await page.getByRole("button", { name: /Soumettre/ }).click();
-  await wait(3200);
+  await wait(5600); // hold on the 19/20
 });
 
 // Off camera: answer the two remaining questions, reach the verdict.
