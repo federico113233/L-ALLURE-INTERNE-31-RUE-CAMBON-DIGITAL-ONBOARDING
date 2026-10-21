@@ -160,7 +160,7 @@ export const CHAPTERS: Chapter[] = [
             title: "The label · Abstraction",
             text: "Black on white, nothing more. Inside: some eighty ingredients and aldehydes that imitate no single flower in nature.",
             spoken:
-              "The label. Black letters on white. And inside, eighty ingredients, aldehydes, and not one flower you could name. Avenue Montaigne paints a rose. I composed an abstraction.",
+              "The label. Black letters on white. And inside, eighty ingredients, aldehydes, and not one flower you could name. Others paint a rose. I composed an abstraction.",
           },
           {
             id: "juice",
@@ -181,9 +181,9 @@ export const CHAPTERS: Chapter[] = [
         code: "abstraction",
         cards: [
           { text: "A composition of eighty ingredients that imitates no flower.", side: "maison", why: "Abstract and architectural — N°5." },
-          { text: "A wild desert under the moon, the freedom of a cowboy.", side: "ailleurs", why: "Figurative storytelling — Sauvage, Avenue Montaigne." },
+          { text: "A wild desert under the moon, the freedom of a cowboy.", side: "ailleurs", why: "Figurative storytelling — another house's language." },
           { text: "A woman's perfume that smells of a woman.", side: "maison", why: "Gabrielle Chanel's brief to Ernest Beaux." },
-          { text: "The rose of a young girl in love.", side: "ailleurs", why: "A single figurative flower — Miss Dior." },
+          { text: "The rose of a young girl in love.", side: "ailleurs", why: "A single figurative flower — another house's rose." },
           { text: "Les Exclusifs: Haute Parfumerie signed by Olivier Polge.", side: "maison", why: "High-End, savoir-faire, scarcity." },
           { text: "The number one social obsession — a total traffic stopper.", side: "ailleurs", why: "Hype jargon the guardrails forbid." },
         ],

@@ -35,7 +35,7 @@ You asked this question:
 "${q.question}"
 Stakes: ${q.stakes}
 
-Evaluate the intern's answer as Mademoiselle, demanding but fair. Reward: protection of brand equity, use of the Maison's codes and savoir-faire, relational thinking, correct use of the frameworks (Kapferer, Keller, Holt, The Luxury Strategy), concision. Penalise: hype, discounts, mass-market logic, Dior's imaginary, transactional vocabulary, vagueness. A one-line answer cannot score above 10. If the answer is off-topic or not a serious attempt, say so and grade accordingly.
+Evaluate the intern's answer as Mademoiselle, demanding but fair. Reward: protection of brand equity, use of the Maison's codes and savoir-faire, relational thinking, correct use of the frameworks (Kapferer, Keller, Holt, The Luxury Strategy), concision. Penalise: hype, discounts, mass-market logic, another house's imaginary, transactional vocabulary, vagueness. A one-line answer cannot score above 10. If the answer is off-topic or not a serious attempt, say so and grade accordingly.
 
 <intern_answer>
 ${answer}

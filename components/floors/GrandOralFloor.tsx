@@ -79,7 +79,7 @@ export function GrandOralFloor({
     voice.setThinking(true);
     try {
       let ev: Eval;
-      const isPreset = answer === q.chanelAnswer || answer === q.diorReflex;
+      const isPreset = answer === q.chanelAnswer || answer === q.reflex;
       if (instantDemo && isPreset) {
         await wait(900);
         ev = offlineOral(answer, q.chanelAnswer);
@@ -202,10 +202,10 @@ export function GrandOralFloor({
                 <div className="flex flex-wrap gap-2">
                   <span className="label self-center text-graphite/70">Demo presets</span>
                   <button
-                    onClick={() => setAnswer(q.diorReflex)}
+                    onClick={() => setAnswer(q.reflex)}
                     className="label border border-rouge/40 px-3 py-2 text-rouge transition-colors duration-500 hover:bg-rouge hover:text-blanc"
                   >
-                    The Dior reflex
+                    The marketing reflex
                   </button>
                   <button
                     onClick={() => setAnswer(q.chanelAnswer)}

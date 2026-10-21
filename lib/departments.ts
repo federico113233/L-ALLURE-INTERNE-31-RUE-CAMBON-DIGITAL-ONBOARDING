@@ -26,7 +26,7 @@ export interface OralQuestion {
   question: string;
   /** Extra context given to Claude when grading. */
   stakes: string;
-  diorReflex: string;
+  reflex: string;
   chanelAnswer: string;
 }
 
@@ -153,34 +153,6 @@ export const ICONICITY_LEVELS = [
   },
 ] as const;
 
-export const DIOR_VS_CHANEL = [
-  {
-    dimension: "Imaginary & archetype",
-    dior: "“Dream in Dior”, the fairy tale, the enchanted garden, theatrical opulence, the thrill, declared seduction.",
-    chanel: "L'Allure — modernity, rigour, freedom of movement, abstraction, reality elevated to style.",
-  },
-  {
-    dimension: "The founder's story",
-    dior: "Christian Dior and the New Look (1947): hourglass silhouette, full skirts, a return to decorative, floral femininity.",
-    chanel: "Gabrielle Chanel — never “Coco” in formal writing; Mademoiselle. Straight lines, jersey, trousers, comfort, subtraction.",
-  },
-  {
-    dimension: "Olfactory approach",
-    dior: "Figurative and descriptive: the lily of the valley of Diorissimo, the rose of Miss Dior, the wild desert of Sauvage.",
-    chanel: "Abstract and architectural: N°5 (1921, Ernest Beaux) — 80 ingredients and aldehydes, imitating no single flower in nature.",
-  },
-  {
-    dimension: "Social jargon & hype",
-    dior: "“Social obsession”, “#Smellmaxxing”, “traffic stopper”, “maximise brand penetration”.",
-    chanel: "Desirability over time, resonance and scarcity (Kapferer & Bastien, The Luxury Strategy). Never the viral buzz.",
-  },
-  {
-    dimension: "Symbolic geography",
-    dior: "30 Avenue Montaigne, Granville, La Colle Noire in Grasse, the lucky star.",
-    chanel: "31 Rue Cambon, the Mirrored Staircase and the Apartment, Place Vendôme, Deauville, Aubazine, Pégomas (the Mul family), the lion, the camellia, the comet, wheat.",
-  },
-] as const;
-
 export const DEPARTMENTS: Record<DeptId, Department> = {
   beaute: {
     id: "beaute",
@@ -256,8 +228,8 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "The Premium segment is losing one percent, while the Indies and Haute Parfumerie grow at double digits. How do we defend N°5 and Les Exclusifs without betraying the Maison?",
         stakes:
           "Premium -1%, Indies +11%, High-End +14% (2026-2029). The temptation is to fight Premium decline with price and volume.",
-        diorReflex:
-          "We should launch a viral TikTok campaign for N°5 with a 20% discount and a travel-size bundle to recruit Gen Z and maximise brand penetration, the way Sauvage did. A dreamy, seductive storyline will make customers fall in love again.",
+        reflex:
+          "We should launch a viral TikTok campaign for N°5 with a 20% discount and a travel-size bundle to recruit Gen Z and maximise brand penetration, the way a rival fragrance did. A dreamy, seductive storyline will make customers fall in love again.",
         chanelAnswer:
           "We do not chase the Premium middle with price. N°5 remains our cognitive anchor — the bottle, 1921, Ernest Beaux — so we protect its brand equity in Keller's sense: no discount, no bundle. Growth comes from the High-End: Les Exclusifs, signed by Olivier Polge, told through savoir-faire and the fields of Pégomas, with deliberate scarcity as The Luxury Strategy teaches. And we answer the Indies with relationship, not noise: olfactory consultations in boutique, a ritual, time given to each client.",
       },
@@ -268,7 +240,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "A retail partner asks for a gift-with-purchase bundle on N°1 de Chanel for Black Friday. Their traffic is falling. What do you answer?",
         stakes:
           "Short-term sell-out pressure from a wholesale partner versus long-term equity of a skincare line built on the red camellia and longevity science.",
-        diorReflex:
+        reflex:
           "Yes — Black Friday is the biggest traffic moment of the year. A bundle with a free mini and 15% off will convert new customers and boost our market share against the competition.",
         chanelAnswer:
           "We decline the bundle, elegantly. A discount teaches the client that N°1 de Chanel is worth less than its price — it erodes brand equity. Instead, we offer the partner a moment of expertise: a skin consultation and the ritual of the red camellia, grown in our open-sky laboratory. We bring them desirability and service, not a markdown. The Maison does not chase promotional moments; it simply remains.",
@@ -280,7 +252,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "Marketing wants a Gen-Z challenge to make N°5 relevant again. How do you bring N°5 to a new generation, the Chanel way?",
         stakes:
           "Relevance with younger clients without turning an icon into a trend. Reference: “See You at 5” by Luca Guadagnino with Margot Robbie.",
-        diorReflex:
+        reflex:
           "We create a #N5Challenge on TikTok with influencers, a dreamy fairy-tale filter and a seduction storyline — the goal is to go viral and become a social obsession this season.",
         chanelAnswer:
           "We do not make N°5 a trend; we make it a myth again. Holt's cultural iconicity: “See You at 5” shows a woman who directs her own story — she misses the date, laughs, dives into the ocean. Freedom and self-irony, not seduction. We invite the new generation as Insiders, not Soldiers of a hype: the story of 1921, the abstraction of the composition, a fragrance for the woman who decided she would not be just another number.",
@@ -361,7 +333,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "A journalist asks why the CHANEL 25 bag cannot be bought online and why its launch is so controlled. How does the Maison answer?",
         stakes:
           "Selective intentionality versus maximal availability. Fashion and fine jewellery are not sold online; digital nourishes the relationship.",
-        diorReflex:
+        reflex:
           "We should apologise and announce an e-commerce drop soon — demand is huge, so we would maximise availability and capture sales before competitors do. Scarcity is just a supply problem.",
         chanelAnswer:
           "We answer without apology. The CHANEL 25 is not withheld; it is offered with intention. A Chanel bag is chosen in a boutique, with time and advice — that is relational iconicity. Selective distribution and controlled launches protect desirability over time, as The Luxury Strategy teaches. Digital is where the relationship begins: you book an appointment, you are received. Scarcity is part of the value.",
@@ -373,7 +345,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "Procurement proposes moving embroidery from Lesage to a cheaper supplier abroad to protect margins. What do you tell the Director?",
         stakes:
           "Cost optimisation versus the protection of savoir-faire gathered in le19M.",
-        diorReflex:
+        reflex:
           "It makes sense: the customer will not see the difference, the supplier can scale production, and the factory savings can be reinvested in marketing and influencer campaigns.",
         chanelAnswer:
           "I would advise against it. The Maison gathered Lesage, Montex and Lemarié inside le19M precisely so that their savoir-faire would never become a line on a cost sheet. These are ateliers, not suppliers. The hand of a Première d'Atelier is our culture in Kapferer's prism — and, once the work is finished, our physique. If we save on the embroidery, we spend our identity — and brand equity, built bottom-up, would follow.",
@@ -385,7 +357,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "Matthieu Blazy reinterprets the tweed jacket. A long-standing client worries the Maison is losing itself. How do you reassure her?",
         stakes:
           "Continuity of codes across artistic directors (Lagerfeld, Viard, Blazy). Reference: Métiers d'art show in the New York subway, December 2025.",
-        diorReflex:
+        reflex:
           "We tell her the new collection is a total revolution, a fresh dreamy fairy tale, completely different from before — newness is what drives traffic and keeps the brand trendy.",
         chanelAnswer:
           "I would tell her that a code is not a museum piece; it is a living language. The tweed, the chain in the hem, the freedom of movement — they remain. Matthieu Blazy speaks them in a new accent, as Karl Lagerfeld did before him. The Métiers d'art show in the New York subway put the hands of le19M inside contemporary culture without losing exclusivity. Strong houses repeat the same codes; great ones keep them alive.",
@@ -466,7 +438,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "The digital team wants one-click checkout for handbags, to remove friction and lift conversion. What is your position?",
         stakes:
           "FMCG System-1 logic (impulse, physical availability) versus Chanel's intentional selectivity: no online sales for Mode.",
-        diorReflex:
+        reflex:
           "I fully support it: frictionless checkout maximises conversion and impulse purchase. Every click we remove is revenue — we should also add urgency timers and push notifications to drive traffic.",
         chanelAnswer:
           "I would not support it. The Maison does not sell handbags online; that selectivity is intentional, and it protects brand equity. One-click is System 1 thinking — the logic of Heineken or Henkel, of physical availability. Our digital journey should end with a person: book an appointment, be received at Rue Cambon or in boutique, be advised. We remove friction from the relationship, never from the act of choosing.",
@@ -478,7 +450,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "A long-standing client's 2.55 has a broken chain after fifteen years. The boutique suggests offering her a discount on a new one. How should the Maison respond?",
         stakes:
           "Replacement and discount versus repair, care and the relationship facet of the prism.",
-        diorReflex:
+        reflex:
           "Offer her 20% off a new bag — it is a great upsell opportunity, she gets the latest model and we increase her lifetime value.",
         chanelAnswer:
           "We repair it. A 2.55 is not replaced; it is cared for. The ateliers restore the chain, we return it with a word, and we take the time to receive her. That is relational iconicity: a bond that lasts longer than a season. A discount would tell her the object is disposable — and that she is a transaction. Care tells her she belongs to the Maison.",
@@ -490,7 +462,7 @@ export const DEPARTMENTS: Record<DeptId, Department> = {
           "We must measure CRM success. Which indicators would you present to the Director — and which would you refuse?",
         stakes:
           "Transactional metrics (conversion, traffic, open rates) versus relational and equity metrics.",
-        diorReflex:
+        reflex:
           "Traffic, conversion rate, email open rate, number of followers and the virality of our posts — the more reach and the more sales per campaign, the better.",
         chanelAnswer:
           "I would present relationship indicators: appointments booked and honoured, repairs and care requests, client retention over years, the quality of recognition in boutique — how many clients are known by name. And I would watch brand equity in Keller's sense, and desirability over time. I would refuse to lead with traffic, virality or discount-driven conversion: they measure noise, not desirability.",

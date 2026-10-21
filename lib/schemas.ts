@@ -30,7 +30,7 @@ export const LexiconSchema = z.object({
         category: z
           .string()
           .describe(
-            "One of: Hype & jargon, Price & promotion, Mass-market logic, Dior imaginary, Name & heritage, Vocabulary of the ateliers, Transactional logic, Ostentation, Tone.",
+            "One of: Hype & jargon, Price & promotion, Mass-market logic, Another house's imaginary, Name & heritage, Vocabulary of the ateliers, Transactional logic, Ostentation, Tone.",
           ),
         framework: z
           .string()

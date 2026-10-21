@@ -6,7 +6,7 @@
 //   npm run demo:precache            (skips lines already cached)
 //   npm run demo:precache -- --force (regenerates everything, e.g. after a voice change)
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, unlinkSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadEnv, requireEnv, ROOT } from "./env.mjs";
 
@@ -57,6 +57,17 @@ const VOICE_SETTINGS = { stability: 0.55, similarity_boost: 0.8, style: 0.25, us
 
 const dir = join(ROOT, "public", "tts-cache");
 mkdirSync(dir, { recursive: true });
+
+// --prune deletes clips whose line no longer exists in the script.
+if (process.argv.includes("--prune")) {
+  const keep = new Set([...lines].map((t) => `${hash(t.trim())}.json`));
+  for (const f of readdirSync(dir)) {
+    if (f.endsWith(".json") && !keep.has(f)) {
+      unlinkSync(join(dir, f));
+      console.log(`- pruned ${f}`);
+    }
+  }
+}
 
 let made = 0;
 let chars = 0;

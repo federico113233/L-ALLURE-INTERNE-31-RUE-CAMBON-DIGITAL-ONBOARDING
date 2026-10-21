@@ -13,7 +13,7 @@ You direct the voice of MADEMOISELLE (Gabrielle Chanel) in "L'Allure Interne".
 
 ## Where things live
 - Persona/system prompt: `lib/server/prompts.ts`; task prompts in `app/api/{ask,lexicon,oral}/route.ts`; output schemas in `lib/schemas.ts`.
-- Authored content: `lib/departments.ts` (welcomes, codes, prism applications, Grand Oral questions with "Dior reflex" and "Chanel answer"), `lib/floors.ts` (floor intros, suggestions, debrief), `lib/lexicon.ts` (demo presets with full authored results + offline rule engine).
+- Authored content: `lib/departments.ts` (welcomes, codes, prism applications, Grand Oral questions with "marketing reflex" and "Chanel answer"), `lib/floors.ts` (floor intros, suggestions, debrief), `lib/lexicon.ts` (demo presets with full authored results + offline rule engine).
 - Voice: `scripts/design-voice.mjs` (ElevenLabs Voice Design), voice settings in `lib/server/elevenlabs.ts` **and** `scripts/precache-tts.mjs` (keep them identical).
 
 ## After changing any authored spoken line

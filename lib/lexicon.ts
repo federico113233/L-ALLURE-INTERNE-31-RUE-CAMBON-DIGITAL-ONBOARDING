@@ -33,9 +33,9 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
   {
     id: "beaute-launch",
     dept: "beaute",
-    label: "The “Sauvage” launch brief",
+    label: "The “viral launch” brief",
     kind: "Marketing brief",
-    text: "We need a viral TikTok launch with discounts to maximise brand penetration like Sauvage did, and make customers dream with Coco.",
+    text: "We need a viral TikTok launch with discounts to maximise brand penetration like the competition's bestseller did, and make customers dream with Coco.",
     result: {
       allureScore: 18,
       verdict: "Six errors in one sentence. Trop de bruit, pas assez d'Allure.",
@@ -65,19 +65,19 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
           correction: "deepen resonance with our clients",
         },
         {
-          quote: "like Sauvage did",
-          category: "Dior imaginary",
-          framework: "Guardrails — Chanel vs. Dior",
+          quote: "like the competition's bestseller did",
+          category: "Another house's imaginary",
+          framework: "Guardrails — the Maison's own codes",
           explanation:
-            "Sauvage is figurative and desert-cowboy; our olfactory language is abstract and architectural. We never benchmark on Dior's codes.",
+            "Benchmarking on a rival's figurative, desert-cowboy fragrance. Our olfactory language is abstract and architectural; we never borrow another house's codes.",
           correction: "in the abstraction of N°5",
         },
         {
           quote: "make customers dream",
-          category: "Dior imaginary",
+          category: "Another house's imaginary",
           framework: "Kapferer Prism — Personality",
           explanation:
-            "“Dream” is Dior's archetype. Chanel offers L'Allure: reality elevated to style. And we speak of clients, not customers.",
+            "“Dream” is another house's archetype. Chanel offers L'Allure: reality elevated to style. And we speak of clients, not customers.",
           correction: "offer our clients L'Allure",
         },
         {
@@ -92,7 +92,7 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
       rewrite:
         "We will unveil the creation the way the Maison always has: patiently, and to those who are waiting for it. No price argument — only the savoir-faire of the composition and the heritage of N°5, abstract as it was in 1921. Our clients will not be asked to dream; they will be offered L'Allure, in the spirit of Gabrielle Chanel.",
       spoken:
-        "Mon cher. Viral, discounts, penetration — this is the vocabulary of a supermarket. And Sauvage? We do not borrow another house's desert. Desire is not a campaign; it is a patience. You do not make a client dream. You give her L'Allure. And please — Gabrielle Chanel. Or Mademoiselle. Never Coco.",
+        "Mon cher. Viral, discounts, penetration — this is the vocabulary of a supermarket. And a rival's fragrance as the model? We do not borrow another house's desert. Desire is not a campaign; it is a patience. You do not make a client dream. You give her L'Allure. And please — Gabrielle Chanel. Or Mademoiselle. Never Coco.",
       source: "preset",
     },
   },
@@ -132,10 +132,10 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
         },
         {
           quote: "dreamy fairy-tale campaign",
-          category: "Dior imaginary",
-          framework: "Guardrails — Chanel vs. Dior",
+          category: "Another house's imaginary",
+          framework: "Guardrails — the Maison's own codes",
           explanation:
-            "The fairy tale and the enchanted garden are Dior's. Chanel speaks of modernity, rigour and freedom of movement.",
+            "The fairy tale and the enchanted garden belong to another house. Chanel speaks of modernity, rigour and freedom of movement.",
           correction: "a campaign of modernity and movement",
         },
         {
@@ -158,7 +158,7 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
       rewrite:
         "Dear all, our atelier will bring the new creation to life with the time it requires. We will introduce it through a controlled launch, with a campaign of modernity and movement, and pure, essential visuals — so that our clients recognise themselves in it.",
       spoken:
-        "A factory? Non. We have ateliers. Hands that remember. And a fairy tale, with opulent visuals — that is the house on Avenue Montaigne, not mine. I cut the corset away; do not sew it back on. Fewer words. Purer lines. The client does not go crazy, mon cher. She recognises herself.",
+        "A factory? Non. We have ateliers. Hands that remember. And a fairy tale, with opulent visuals — that is another house, not mine. I cut the corset away; do not sew it back on. Fewer words. Purer lines. The client does not go crazy, mon cher. She recognises herself.",
       source: "preset",
     },
   },
@@ -232,10 +232,10 @@ export const LEXICON_PRESETS: LexiconPreset[] = [
       errors: [
         {
           quote: "Smell like a rose garden",
-          category: "Dior imaginary",
+          category: "Another house's imaginary",
           framework: "Guardrails — olfactory approach",
           explanation:
-            "Figurative, floral description is Dior's (Miss Dior's rose). Chanel composes abstractly: N°5 imitates no single flower.",
+            "Figurative, single-flower description is another house's language. Chanel composes abstractly: N°5 imitates no single flower.",
           correction: "An abstract composition",
         },
         {
@@ -316,10 +316,10 @@ const RULES: Rule[] = [
   },
   {
     re: /\b(dream(?:y|s|ing)?|fair(?:y|ies)[- ]?tales?|enchant(?:ed|ing)|magic(?:al)?|sauvage|miss dior|j'adore|diorissimo|dior|rose garden|lucky star)\b/gi,
-    category: "Dior imaginary",
-    framework: "Guardrails — Chanel vs. Dior",
+    category: "Another house's imaginary",
+    framework: "Guardrails — the Maison's own codes",
     explanation:
-      "Dream, fairy tale, enchanted garden, figurative flowers: the imaginary of the house on Avenue Montaigne. Chanel offers L'Allure — reality elevated to style.",
+      "Dream, fairy tale, enchanted garden, figurative flowers, a rival's products: the imaginary of another house. Chanel offers L'Allure — reality elevated to style.",
     correction: "L'Allure",
   },
   {

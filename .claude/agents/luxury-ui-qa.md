@@ -16,9 +16,9 @@ You are the QA lead for "L'Allure Interne" (Next.js app in this repo). The dev s
 ## Test script
 1. `/` — name + department selection, "Entrer à la Maison" disabled until both are set.
 2. `/maison` — welcome line plays (or silent reading if no voice), stage shows state label (Elle parle / réfléchit / écoute), kinetic caption, ink waves.
-3. Étage I — click every prism facet; Chanel/Dior toggle; an "Ask Mademoiselle" suggestion.
+3. Chapter I (Camélia) — colours and the Kapferer prism game; an "Ask Mademoiselle" question (click her).
 4. Étage II — every demo preset; red highlights align with the quoted words; numbered corrections; "Version Maison"; toggle "Démo instantanée" and re-run a preset.
-5. Étage III — run all three questions with "The Dior reflex" and "The Chanel answer" presets; feedback scrolls into view; final verdict.
+5. Étage III — run all three questions with "The marketing reflex" and "The Chanel answer" presets; feedback scrolls into view; final verdict.
 6. Repeat a quick pass at 375×812 (mobile): no horizontal scroll, stage on top, header controls reachable.
 7. Check the console for errors and hydration warnings.
 
