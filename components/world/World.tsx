@@ -27,6 +27,17 @@ const ROOM_SCALE: Record<Chapter["object"], number> = {
   pearls: 1.1,
 };
 
+// Invisible click area around each icon, sized to its shape so neighbours
+// (e.g. the letter in front of the pearls) never steal each other's clicks.
+const HIT_RADIUS: Record<Chapter["object"], number> = {
+  bottle: 0.85,
+  bag: 1.05,
+  camellia: 0.9,
+  stair: 1.05,
+  letter: 0.8,
+  pearls: 0.9,
+};
+
 // Flat icons that would read as a sliver if they turned side-on.
 const FLAT = new Set<Chapter["object"]>(["letter", "camellia"]);
 
@@ -209,7 +220,7 @@ function Slot({
               {model}
               {/* invisible hit area so thin objects are easy to click */}
               <mesh visible={false}>
-                <sphereGeometry args={[1.1, 12, 12]} />
+                <sphereGeometry args={[HIT_RADIUS[chapter.object], 12, 12]} />
               </mesh>
             </group>
           </Float>

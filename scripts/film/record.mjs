@@ -29,16 +29,26 @@ async function openObject(caption, lift = 150) {
     const box = await page.locator("div.absolute", { hasText: caption }).filter({ has: page.locator("span.display") }).first().boundingBox();
     if (!box) throw new Error(`no caption ${caption}`);
     await page.mouse.click(box.x + box.width / 2, box.y - lift);
-    await wait(1200);
-    if (await page.locator("aside").count()) return;
+    // entered the right chapter? (its name is the panel's heading)
+    try {
+      await page.locator("aside h2", { hasText: caption }).waitFor({ timeout: 3500 });
+      return;
+    } catch {
+      await page.screenshot({ path: `video/tmp/miss-${caption.replace(/\W+/g, "")}-${attempt}.png` });
+      if (await page.locator("aside").count()) {
+        await page.getByRole("button", { name: /La Galerie/ }).first().click();
+        await wait(5000);
+      }
+    }
   }
   throw new Error(`could not open ${caption}`);
 }
 
 async function toGallery() {
   await page.mouse.move(960, 1060); // park the (invisible) pointer away from the objects
-  await page.keyboard.press("Escape");
-  await wait(5500); // let the camera settle back on the whole gallery
+  await page.getByRole("button", { name: /La Galerie/ }).first().click();
+  await page.locator("h1", { hasText: "Bienvenue" }).waitFor();
+  await wait(5000); // let the camera settle back on the whole gallery
 }
 
 // Fresh visitor, presenter mode on, in-app audio muted (the film has its own soundtrack).
