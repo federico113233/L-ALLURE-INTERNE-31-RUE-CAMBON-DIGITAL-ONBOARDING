@@ -344,6 +344,21 @@ export default function Experience() {
 
       <CodeToast code={toastQueue[0] ?? null} />
 
+      {/* The browser is holding her voice until the visitor interacts. */}
+      <AnimatePresence>
+        {voice.blocked && !voice.muted && (
+          <motion.button
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.5 }}
+            className="label fixed bottom-8 left-1/2 z-50 -translate-x-1/2 border border-or bg-noir px-6 py-3 text-or"
+          >
+            Touchez l&apos;écran pour entendre Mademoiselle
+          </motion.button>
+        )}
+      </AnimatePresence>
+
       {prologueMounted && <Prologue onEnter={arrive} onDone={() => setPrologueMounted(false)} />}
     </main>
   );

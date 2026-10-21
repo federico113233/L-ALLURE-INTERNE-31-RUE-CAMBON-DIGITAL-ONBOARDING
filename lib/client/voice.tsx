@@ -32,6 +32,8 @@ interface Voice {
   available: boolean | null;
   /** Mademoiselle is composing an answer (a Claude call is in flight). */
   thinking: boolean;
+  /** The browser refused to play her voice until the visitor clicks. */
+  blocked: boolean;
   setThinking: (v: boolean) => void;
   setMuted: (m: boolean) => void;
   speak: (text: string) => Promise<void>;
@@ -110,6 +112,7 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
   const [muted, setMutedState] = useState(false);
   const [available, setAvailable] = useState<boolean | null>(null);
   const [thinking, setThinking] = useState(false);
+  const [blocked, setBlocked] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const ctxRef = useRef<AudioContext | null>(null);
@@ -278,7 +281,10 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
       } catch (err) {
         // Autoplay blocked (no click yet on this page) or decode error: read
         // silently now, and replay the line with sound on the next click.
-        if (err instanceof DOMException && err.name === "NotAllowedError") pendingRef.current = clean;
+        if (err instanceof DOMException && err.name === "NotAllowedError") {
+          pendingRef.current = clean;
+          setBlocked(true);
+        }
         if (tokenRef.current === id) playSilent(id, clean);
         return;
       }
@@ -301,6 +307,7 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const unlock = () => {
       ensureAudio();
+      setBlocked(false);
       const pending = pendingRef.current;
       if (!pending) return;
       const before = tokenRef.current;
@@ -372,6 +379,7 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
       muted,
       available,
       thinking,
+      blocked,
       setThinking,
       setMuted,
       speak,
@@ -380,7 +388,7 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
       getTime,
       getLevel,
     }),
-    [status, utterance, muted, available, thinking, setMuted, speak, stop, prime, getTime, getLevel],
+    [status, utterance, muted, available, thinking, blocked, setMuted, speak, stop, prime, getTime, getLevel],
   );
 
   return <VoiceContext.Provider value={value}>{children}</VoiceContext.Provider>;
