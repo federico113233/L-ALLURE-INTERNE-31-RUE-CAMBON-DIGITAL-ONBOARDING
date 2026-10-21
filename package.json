@@ -13,7 +13,10 @@
     "typecheck": "tsc --noEmit",
     "voice:design": "node scripts/design-voice.mjs",
     "voice:save": "node scripts/design-voice.mjs --save",
-    "demo:precache": "node scripts/precache-tts.mjs"
+    "demo:precache": "node scripts/precache-tts.mjs",
+    "film:record": "node scripts/film/record.mjs && node scripts/film/cards.mjs",
+    "film:music": "python scripts/film/music.py 64 video/music.wav",
+    "film:assemble": "node scripts/film/assemble.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.135.0",
@@ -37,6 +40,7 @@
     "@types/three": "^0.186.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
+    "playwright": "^1.64.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
