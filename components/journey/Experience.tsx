@@ -179,6 +179,13 @@ export default function Experience() {
     later(() => void speak(HUB_LINES.return), 1200);
   }
 
+  // Film/presenter automation: with ?film in the URL, expose the same actions a
+  // click would trigger, so a scripted recording never depends on pixel hits.
+  useEffect(() => {
+    if (!new URLSearchParams(window.location.search).has("film")) return;
+    (window as unknown as { __allure?: object }).__allure = { open: openRoom, gallery: goGallery };
+  });
+
   const handlers: WorldHandlers = useMemo(
     () => ({
       onOpen: openRoom,

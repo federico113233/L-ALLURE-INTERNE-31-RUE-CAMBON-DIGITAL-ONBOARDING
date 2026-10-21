@@ -23,42 +23,30 @@ async function shot(name, fn) {
   console.log(`✓ ${name}: ${r.seconds.toFixed(1)}s @ ${r.fps.toFixed(0)} fps`);
 }
 
-/** Click a floating object in the gallery: its caption sits just below it. */
-async function openObject(caption, lift = 150) {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const box = await page.locator("div.absolute", { hasText: caption }).filter({ has: page.locator("span.display") }).first().boundingBox();
-    if (!box) throw new Error(`no caption ${caption}`);
-    await page.mouse.click(box.x + box.width / 2, box.y - lift);
-    // entered the right chapter? (its name is the panel's heading)
-    try {
-      await page.locator("aside h2", { hasText: caption }).waitFor({ timeout: 3500 });
-      return;
-    } catch {
-      await page.screenshot({ path: `video/tmp/miss-${caption.replace(/\W+/g, "")}-${attempt}.png` });
-      if (await page.locator("aside").count()) {
-        await page.getByRole("button", { name: /La Galerie/ }).first().click();
-        await wait(5000);
-      }
-    }
-  }
-  throw new Error(`could not open ${caption}`);
+const CHAPTER = { "La 2.55": "mode", "La Lettre": "lexique", "Les Perles": "oral" };
+
+/** Open a chapter exactly as a click would (Mademoiselle walks in, camera flies). */
+async function openObject(caption) {
+  await page.evaluate((id) => window.__allure.open(id), CHAPTER[caption]);
+  await page.locator("aside h2", { hasText: caption }).waitFor({ timeout: 8000 });
 }
 
 async function toGallery() {
   await page.mouse.move(960, 1060); // park the (invisible) pointer away from the objects
-  await page.getByRole("button", { name: /La Galerie/ }).first().click();
+  await page.evaluate(() => window.__allure.gallery());
   await page.locator("h1", { hasText: "Bienvenue" }).waitFor();
   await wait(5000); // let the camera settle back on the whole gallery
 }
 
 // Fresh visitor, presenter mode on, in-app audio muted (the film has its own soundtrack).
-await page.goto(URL);
+// (set storage from a page that doesn't run the app, so nothing overwrites it)
+await page.goto(URL + "/api/health");
 await page.evaluate(() => {
   localStorage.clear();
   localStorage.setItem("allure-interne:session", JSON.stringify({ name: "", dept: null, instantDemo: true }));
   localStorage.setItem("allure-interne:muted", "1");
 });
-await page.goto(URL);
+await page.goto(URL + "/?film");
 await wait(4000);
 
 // ── A · Prologue: seal → letter → doors → gallery ─────────────────────────
@@ -74,6 +62,11 @@ await shot("a-prologue", async () => {
   await page.getByRole("button", { name: /Entrer à la Maison/ }).click();
   await wait(9500);
 });
+
+// Presenter mode must be on (all doors open, instant presets).
+const demo = page.getByRole("button", { name: "Démo", exact: true });
+if ((await demo.getAttribute("aria-pressed")) !== "true") await demo.click();
+await wait(500);
 
 // ── B · La 2.55 opens on its burgundy lining ──────────────────────────────
 await shot("b-bag", async () => {
