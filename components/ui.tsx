@@ -3,24 +3,32 @@
 import { motion } from "framer-motion";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-export function Monogram({ className = "h-6 w-10", color = "currentColor" }: { className?: string; color?: string }) {
-  // Two interlocking Cs, drawn geometrically.
+// The Maison's logo, from the reference artwork (knowledge/reference-logo.webp),
+// cleaned to transparent PNGs in public/brand: the interlocking CC and the
+// CHANEL wordmark, each in black and in white.
+type Tone = "black" | "white";
+
+export function Monogram({ className = "h-6 w-auto", tone = "black" }: { className?: string; tone?: Tone }) {
   return (
-    <svg viewBox="0 0 100 60" className={className} aria-hidden="true">
-      <g fill="none" stroke={color} strokeWidth="6.5" strokeLinecap="butt">
-        <path d="M53.76 42.31 A20 20 0 1 1 53.76 17.69" />
-        <path d="M46.24 17.69 A20 20 0 1 1 46.24 42.31" />
-      </g>
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element -- tiny static brand asset, no optimisation needed
+    <img
+      src={tone === "white" ? "/brand/chanel-cc-white.png" : "/brand/chanel-cc.png"}
+      alt="CHANEL"
+      className={`select-none object-contain ${className}`}
+      draggable={false}
+    />
   );
 }
 
-export function Wordmark({ className = "" }: { className?: string }) {
+export function Wordmark({ className = "h-3.5 w-auto", tone = "black" }: { className?: string; tone?: Tone }) {
   return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
-      <Monogram className="h-5 w-8" />
-      <span className="label-strong text-[0.8rem] tracking-[0.42em]">Chanel</span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element -- tiny static brand asset, no optimisation needed
+    <img
+      src={tone === "white" ? "/brand/chanel-wordmark-white.png" : "/brand/chanel-wordmark.png"}
+      alt="CHANEL"
+      className={`select-none object-contain ${className}`}
+      draggable={false}
+    />
   );
 }
 

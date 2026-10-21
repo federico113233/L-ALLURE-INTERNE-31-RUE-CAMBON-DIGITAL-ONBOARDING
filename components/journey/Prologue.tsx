@@ -88,7 +88,7 @@ export function Prologue({ onEnter, onDone }: { onEnter: () => void; onDone: () 
                 <path d="M0 0 L180 125 L360 0" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
               </svg>
               <span className="absolute left-1/2 top-[125px] flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-or shadow-[0_0_40px_rgba(197,160,89,0.45)] transition-transform duration-700 group-hover:scale-110">
-                <Monogram className="h-7 w-11" color="#000000" />
+                <Monogram className="h-8 w-auto" />
               </span>
             </motion.button>
             <motion.p
@@ -119,7 +119,7 @@ export function Prologue({ onEnter, onDone }: { onEnter: () => void; onDone: () 
             >
               <div className="pointer-events-none absolute inset-3 border border-noir/10" />
               <div className="flex items-center justify-between">
-                <Monogram className="h-5 w-8" />
+                <Monogram className="h-6 w-auto" />
                 <span className="label text-[0.58rem] text-graphite">Lettre d&apos;admission</span>
               </div>
               <motion.p

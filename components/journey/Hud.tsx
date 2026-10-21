@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Monogram } from "@/components/ui";
+import { Monogram, Wordmark } from "@/components/ui";
 import { CHAPTER_BY_ID, CODES, levelFor, type CodeId } from "@/lib/journey/content";
 import { useJourney } from "@/lib/journey/store";
 
@@ -84,8 +84,8 @@ export function Hud({
     >
       <div className="pointer-events-auto flex items-center gap-4">
         <button onClick={onGallery} className="flex items-center gap-3" aria-label="Back to the gallery">
-          <Monogram className="h-5 w-8" />
-          <span className="label-strong hidden text-[0.72rem] tracking-[0.38em] md:inline">Chanel</span>
+          <Monogram className="h-6 w-auto" />
+          <Wordmark className="hidden h-[13px] w-auto md:block" />
         </button>
         <AnimatePresence mode="wait">
           {phase === "room" && chapter ? (

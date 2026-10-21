@@ -53,7 +53,7 @@ export function Finale({ name, dept, onGallery, onRestart }: { name: string; dep
         <div className="relative border-t border-or/30 p-8 sm:p-12 md:border-l md:border-t-0">
           <div className="flex items-center justify-between">
             <span className="label text-[0.6rem] text-or">Carte d&apos;Insider</span>
-            <Monogram className="h-5 w-8" color="#FFFFFF" />
+            <Monogram className="h-6 w-auto" tone="white" />
           </div>
           <h2 className="display mt-8 text-5xl sm:text-6xl">{name || "Insider"}</h2>
           <p className="label mt-3 text-blanc/60">
