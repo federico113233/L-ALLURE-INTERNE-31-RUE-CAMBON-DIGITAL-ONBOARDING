@@ -122,6 +122,21 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
   const urlRef = useRef<string | null>(null);
   const mutedRef = useRef(false);
   const availableRef = useRef<boolean | null>(null);
+  const checkedAtRef = useRef(0);
+  /** A line the browser refused to autoplay; replayed on the next click. */
+  const pendingRef = useRef<string | null>(null);
+
+  const checkHealth = useCallback(async () => {
+    checkedAtRef.current = Date.now();
+    try {
+      const h = (await (await fetch("/api/health", { cache: "no-store" })).json()) as { voice?: boolean };
+      availableRef.current = Boolean(h.voice);
+    } catch {
+      availableRef.current = false;
+    }
+    setAvailable(availableRef.current);
+    return availableRef.current;
+  }, []);
 
   useEffect(() => {
     try {
@@ -130,17 +145,8 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
     } catch {
       /* ignore */
     }
-    fetch("/api/health")
-      .then((r) => r.json())
-      .then((h: { voice?: boolean }) => {
-        availableRef.current = Boolean(h.voice);
-        setAvailable(Boolean(h.voice));
-      })
-      .catch(() => {
-        availableRef.current = false;
-        setAvailable(false);
-      });
-  }, []);
+    void checkHealth();
+  }, [checkHealth]);
 
   useEffect(() => {
     mutedRef.current = muted;
@@ -208,7 +214,8 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
       stop();
       const id = ++tokenRef.current;
 
-      if (mutedRef.current || availableRef.current === false) {
+      pendingRef.current = null;
+      if (mutedRef.current) {
         playSilent(id, clean);
         return;
       }
@@ -227,7 +234,12 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
           /* not cached */
         }
       }
-      if (!data) {
+      // Live voice: if it looked unavailable (e.g. keys added after this page
+      // loaded), re-check the server at most every 20 s instead of giving up.
+      if (!data && availableRef.current === false && Date.now() - checkedAtRef.current > 20_000) {
+        await checkHealth();
+      }
+      if (!data && availableRef.current !== false) {
         try {
           const r = await fetch("/api/tts", {
             method: "POST",
@@ -263,8 +275,10 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
       };
       try {
         await audio.play();
-      } catch {
-        // Autoplay blocked or decode error — read silently instead.
+      } catch (err) {
+        // Autoplay blocked (no click yet on this page) or decode error: read
+        // silently now, and replay the line with sound on the next click.
+        if (err instanceof DOMException && err.name === "NotAllowedError") pendingRef.current = clean;
         if (tokenRef.current === id) playSilent(id, clean);
         return;
       }
@@ -278,8 +292,29 @@ export function VoiceProvider({ children }: { children: React.ReactNode }) {
       });
       setStatus("speaking");
     },
-    [ensureAudio, playSilent, stop],
+    [ensureAudio, playSilent, stop, checkHealth],
   );
+
+  // The first click or key press anywhere unlocks audio for the whole page
+  // (browsers block sound until the visitor interacts). If a line was refused
+  // before that, she says it again — unless the click itself started a new line.
+  useEffect(() => {
+    const unlock = () => {
+      ensureAudio();
+      const pending = pendingRef.current;
+      if (!pending) return;
+      const before = tokenRef.current;
+      setTimeout(() => {
+        if (pendingRef.current === pending && tokenRef.current === before) void speak(pending);
+      }, 300);
+    };
+    window.addEventListener("pointerdown", unlock, true);
+    window.addEventListener("keydown", unlock, true);
+    return () => {
+      window.removeEventListener("pointerdown", unlock, true);
+      window.removeEventListener("keydown", unlock, true);
+    };
+  }, [ensureAudio, speak]);
 
   const prime = useCallback(() => {
     ensureAudio();

@@ -47,7 +47,8 @@ export default function Experience() {
   const j = useJourney.getState();
   const [prologueMounted, setPrologueMounted] = useState(true);
   const [toastQueue, setToastQueue] = useState<CodeId[]>([]);
-  const [soundOn, setSoundOn] = useState(true);
+  // Single source of truth: the voice's persisted mute preference.
+  const soundOn = !voice.muted;
   const [askOpen, setAskOpen] = useState(false);
   const arrived = useRef(false);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -60,6 +61,12 @@ export default function Experience() {
 
   const later = (fn: () => void, ms: number) => timers.current.push(setTimeout(fn, ms));
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+  // Keep the generative sound design in step with the persisted mute preference.
+  // (only silences here; turning sound back on is an explicit click on "Muet").
+  useEffect(() => {
+    if (voice.muted) sfx.setEnabled(false);
+  }, [voice.muted]);
 
   // Ambient ducks under her voice.
   useEffect(() => {
@@ -242,7 +249,7 @@ export default function Experience() {
           soundOn={soundOn}
           onToggleSound={() => {
             const v = !soundOn;
-            setSoundOn(v);
+            sfx.unlock();
             sfx.setEnabled(v);
             voice.setMuted(!v);
           }}
