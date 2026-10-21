@@ -80,7 +80,7 @@ await shot("c-lexicon", async () => {
   await wait(300);
   await openObject("La Lettre");
   await wait(1800);
-  await page.getByRole("button", { name: /Sauvage” launch brief/ }).click();
+  await page.getByRole("button", { name: /viral launch” brief/ }).click();
   await wait(3200);
   await page.evaluate(() => {
     const el = document.querySelector("aside .overflow-y-auto");

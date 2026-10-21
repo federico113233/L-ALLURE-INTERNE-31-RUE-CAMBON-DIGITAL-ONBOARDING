@@ -26,16 +26,16 @@ Un brand iconico lavora simultaneamente su 4 livelli che l'intern deve presidiar
 
 \---
 
-\#\# 2\. CRITICAL GUARDRAILS: CHANEL VS. DIOR (COSA NON DIRE MAI)  
-Il case study Dior (LVMH) mostra esattamente come comunica il principale concorrente. L'intern di Chanel deve imparare a \*\*distinguere radicalmente\*\* il lessico, la postura e la strategia di Chanel da quelli di Dior.
+\#\# 2\. CRITICAL GUARDRAILS: CHANEL VS. ALTRE MAISON (COSA NON DIRE MAI)  
+Il caso dei principali concorrenti mostra esattamente come comunicano le altre maison del lusso. L'intern di Chanel deve imparare a \*\*distinguere radicalmente\*\* il lessico, la postura e la strategia di Chanel da quelli delle altre maison, senza mai nominarle.
 
-| Dimensione | DIOR (Approccio da EVITARE in Chanel) | CHANEL (Approccio CORRETTO da insegnare) |  
+| Dimensione | ALTRE MAISON (Approccio da EVITARE in Chanel) | CHANEL (Approccio CORRETTO da insegnare) |  
 | :--- | :--- | :--- |  
-| \*\*Immaginario & Archetipo\*\* | \*"Dream in Dior"\*, la fiaba, il giardino incantato, l'opulenza teatrale, il \*Thrill\*, la seduzione dichiarata. | \*\*L'Allure\*\*, la modernità, il rigore, la libertà di movimento, l'astrazione, la realtà elevata a stile. |  
-| \*\*Storia del Fondatore\*\* | Christian Dior e il \*New Look\* (1947): silhouette a clessidra, gonne ampie, ritorno alla femminilità decorativa e fiorita. | \*\*Gabrielle Chanel\*\* (mai chiamarla "Coco" nei documenti formali, si usa \*Gabrielle Chanel\* o \*Mademoiselle\*): linee dritte, jersey, pantaloni, comodità, sottrazione (\*"Prima di uscire, guardati allo specchio e togli qualcosa"\*). |  
-| \*\*Approccio Olfattivo\*\* | Figurativo e descrittivo: il mughetto di \*Diorissimo\*, la rosa di \*Miss Dior\*, il deserto selvaggio e "Moonshiner" di \*Sauvage\*. | \*\*Astratto e Architetturale\*\*: \*N°5\* (1921, Ernest Beaux) nasce come "un profumo da donna che sa di donna", una composizione di 80 ingredienti e aldeidi che non imita alcun fiore singolo in natura. |  
+| \*\*Immaginario & Archetipo\*\* | il sogno come promessa, la fiaba, il giardino incantato, l'opulenza teatrale, il \*Thrill\*, la seduzione dichiarata. | \*\*L'Allure\*\*, la modernità, il rigore, la libertà di movimento, l'astrazione, la realtà elevata a stile. |  
+| \*\*Storia del Fondatore\*\* | Il ritorno del dopoguerra alla femminilità decorativa e fiorita: silhouette a clessidra, vita stretta, gonne ampie. | \*\*Gabrielle Chanel\*\* (mai chiamarla "Coco" nei documenti formali, si usa \*Gabrielle Chanel\* o \*Mademoiselle\*): linee dritte, jersey, pantaloni, comodità, sottrazione (\*"Prima di uscire, guardati allo specchio e togli qualcosa"\*). |  
+| \*\*Approccio Olfattivo\*\* | Figurativo e descrittivo: il singolo fiore raccontato (il mughetto, la rosa della giovane innamorata), il deserto selvaggio e l'archetipo del cowboy. | \*\*Astratto e Architetturale\*\*: \*N°5\* (1921, Ernest Beaux) nasce come "un profumo da donna che sa di donna", una composizione di 80 ingredienti e aldeidi che non imita alcun fiore singolo in natura. |  
 | \*\*Gergo Social & Hype\*\* | Usa termini da marketing aggressivo o trend TikTok: \*"Social Obsession"\*, \*"\#Smellmaxxing"\*, \*"Traffic stopper"\*, \*"Maximize brand penetration"\*. | Rifiuta il gergo da mass-market e i trend effimeri. Non si cerca il "viral buzz", ma la \*\*desiderabilità nel tempo\*\*, la \*\*Risonanza\*\* e la \*\*Scarsità\*\* (Kapferer & Bastien, \*The Luxury Strategy\*). |  
-| \*\*Geografia Simbolica\*\* | 30 Avenue Montaigne, Granville, \*La Colle Noire\* a Grasse, la stella portafortuna. | \*\*31 Rue Cambon\*\* (con la Scala degli Specchi e l'Appartamento), Place Vendôme (la forma del tappo del N°5 e degli orologi Première), Deauville, Aubazine, i campi di Pégomas a Grasse (famiglia Mul), il Leone, la Camelia, la Cometa, il Grano. |
+| \*\*Geografia Simbolica\*\* | Indirizzi, luoghi e simboli portafortuna di altre maison: non si citano mai. | \*\*31 Rue Cambon\*\* (con la Scala degli Specchi e l'Appartamento), Place Vendôme (la forma del tappo del N°5 e degli orologi Première), Deauville, Aubazine, i campi di Pégomas a Grasse (famiglia Mul), il Leone, la Camelia, la Cometa, il Grano. |
 
 \---
 
@@ -61,7 +61,7 @@ Quando lo stagista seleziona il proprio dipartimento (o \*Métier\*), l'AI adatt
 \#\# 4\. CHANEL 360° STORYTELLING, CAMPAIGNS & VISUAL DESIGN SYSTEM (2024-2026)
 
 \#\#\# A. Visual Design System & Typography (Per UI/UX e Brand Audit)  
-A differenza di competitor come Dior (che utilizza font Serif ad alto contrasto come \`Dior BRX41\`), l'identità visiva di Chanel è basata sul modernismo geometrico degli anni '20:  
+A differenza di altre maison (che usano font Serif ad alto contrasto come firma), l'identità visiva di Chanel è basata sul modernismo geometrico degli anni '20:  
 \* \*\*Font Primario (Headings & UI):\*\* \`ABChanel Couture\` (sostituto web: \`Jost\`, \`Montserrat\` o \`Futura PT\`), rigorosamente in \*\*UPPERCASE (Tutto Maiuscolo)\*\*, font-weight \`600\` (Semi-Bold), letter-spacing ampio (\`tracking-\[0.2em\]\`).  
 \* \*\*Font Secondario (Body & Storytelling):\*\* \`ABChanel Corpo\` o un Sans-Serif pulitissimo (\`Inter\` / \`Plus Jakarta Sans\` con peso \`300\`/\`400\`) affiancato da un editoriale \`Cormorant Garamond\` in corsivo solo per le citazioni storiche di Gabrielle Chanel.  
 \* \*\*I 5 Colori Codificati (Inside Chanel \- Chapter 11):\*\*  
@@ -75,6 +75,6 @@ A differenza di competitor come Dior (che utilizza font Serif ad alto contrasto 
 \#\#\# B. Archetipi dello Storytelling Pubblicitario (Come racconta le storie Chanel)  
 Le campagne Chanel privilegiano l'aspirazione e il mito culturale (Douglas Holt) rispetto all'informazione tecnica:  
 \* \*\*Case Study 1 — N°5 "See You at 5" (Luca Guadagnino & Margot Robbie):\*\* L'ambassador non è una donna passiva o decorativa, ma un'attrice/produttrice che guida la propria storia (in abito rosso ispirato allo spot di Ridley Scott del 1986 con Carole Bouquet). Quando manca l'appuntamento romantico, non soffre: ride e si tuffa nell'oceano. \*Insegnamento per l'intern:\* In Chanel la seduzione non è mai compiacere gli altri, ma affermare la propria libertà e auto-ironia (\*"A fragrance for the woman who has decided she won't be just another number"\*).  
-\* \*\*Case Study 2 — Bleu de Chanel (Martin Scorsese & Timothée Chalamet):\*\* L'uomo Chanel rifiuta gli stereotipi aggressivi (in netto contrasto con l'archetipo cowboy/deserto di \*Sauvage\* di Dior) per cercare la propria verità artistica e interiore.  
+\* \*\*Case Study 2 — Bleu de Chanel (Martin Scorsese & Timothée Chalamet):\*\* L'uomo Chanel rifiuta gli stereotipi aggressivi (in netto contrasto con l'archetipo cowboy/deserto delle fragranze maschili concorrenti) per cercare la propria verità artistica e interiore.  
 \* \*\*Case Study 3 — La Nuova Era Moda (Matthieu Blazy, 2025-2026):\*\* Con l'arrivo di Matthieu Blazy alla direzione artistica (dopo Karl Lagerfeld e Virginie Viard), Chanel dimostra come un codice storico non sia un pezzo da museo, ma una lingua viva: la sfilata \*Métiers d'art\* nella metropolitana di New York (dicembre 2025\) e il lancio controllato della borsa \*CHANEL 25\* uniscono altissimo artigianato e cultura contemporanea senza mai perdere l'esclusività.  
 \* \*\*Tone of Voice di "Inside Chanel" (Modello per la Voce ElevenLabs):\*\* Frasi brevi, paratattiche, ritmate, costruite per paradossi eleganti. Esempio di struttura sintattica: \*"Prima il nero. Poi la luce. Non un semplice vestito, ma una conquista di libertà. A 31 Rue Cambon, lo stile non segue il tempo: lo precede."\*  
