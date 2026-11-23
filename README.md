@@ -1,6 +1,6 @@
 # L'Allure Interne: a voice-first onboarding that teaches new CHANEL interns the codes no one writes down
 
-**Live:** [l-allure-interne-31-rue-cambon-digi.vercel.app](https://l-allure-interne-31-rue-cambon-digi.vercel.app) · **Film:** [64-second walkthrough](L-Allure-Interne-film.mp4) · **Role:** concept, UX/UI, conversation and voice design, build · **Context:** HEC Paris, *Strategic Brand Management* (Prof. G. Kretz), Business Project for CHANEL, Oct 2026
+**Live:** [l-allure-interne-31-rue-cambon-digi.vercel.app](https://l-allure-interne-31-rue-cambon-digi.vercel.app) · **Film:** [64-second walkthrough](L-Allure-Interne-film.mp4) · **Role:** concept, UX/UI, conversation and voice design, build · **Context:** brief from CHANEL, *Strategic Brand Management*, HEC Paris, Oct 2026
 
 ![The 2.55 opens on its burgundy lining while Mademoiselle explains why](docs/screenshots/bag.gif)
 
@@ -56,7 +56,7 @@ The risk is concrete. Interns arrive fluent in mass-market marketing: "viral lau
 2. **For tacit knowledge, the format is the message.** A gamified 3D gallery could look like decoration. Here it does the teaching: an intern who has *opened* the 2.55 remembers why the lining is burgundy.
 3. **Design for the room you'll present in.** Pre-cached audio, offline engines and a presenter mode (every door open, instant answers) cost a few days. They are the reason the demo can run on any laptop and any Wi-Fi.
 
-> *A student prototype built for an HEC Paris business project. Not an official CHANEL product. CHANEL and its logos are trademarks of CHANEL, used here for academic purposes only.*
+> *Independent prototype. Not an official CHANEL product. CHANEL and its logos are trademarks of CHANEL.*
 
 ---
 
